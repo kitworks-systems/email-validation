@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu item for accessing the email validation web interface -->
+    <menuitem id="menu_email_validation_web"
+        name="Bulk Validation"
+        parent="kw_email_validation.menu_email_validation_root"
+        action="action_email_validation_web"
+        sequence="30"/>
+    
+    <!-- Action for opening the web interface -->
+    <record id="action_email_validation_web" model="ir.actions.act_url">
+        <field name="name">Bulk Email Validation</field>
+        <field name="url">/email_validation/validate</field>
+        <field name="target">self</field>
+    </record>
+</odoo>

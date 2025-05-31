@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_kw_email_validation_rule_tree" model="ir.ui.view">
+        <field name="name">kw.email.validation.rule.tree</field>
+        <field name="model">kw.email.validation.rule</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="active" invisible="1"/>
+                <field name="validator_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_kw_email_validation_rule_form" model="ir.ui.view">
+        <field name="name">kw.email.validation.rule.form</field>
+        <field name="model">kw.email.validation.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="validator_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_kw_email_validation_rule_search" model="ir.ui.view">
+        <field name="name">kw.email.validation.rule.search</field>
+        <field name="model">kw.email.validation.rule</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name" filter_domain="[('name', 'ilike', self)]"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Validator" name="group_by_validator" context="{'group_by':'validator_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_kw_email_validation_rule" model="ir.actions.act_window">
+        <field name="name">Email Validation Rules</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kw.email.validation.rule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_kw_email_validation_rule_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first validation rule
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_kw_email_validation_rule"
+              parent="kw_email_validation_main_menu"
+              action="action_kw_email_validation_rule"
+              sequence="30"/>
+</odoo>
