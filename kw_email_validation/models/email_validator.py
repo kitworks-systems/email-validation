@@ -149,11 +149,6 @@ class EmailValidator(models.Model):
             return False
 
     def validate_email_neverbounce(self, email, **kwargs):
-        """Validate email using NeverBounce API.
-
-        NeverBounce API returns 'valid' for valid emails.
-        API Documentation: https://developers.neverbounce.com/docs/single-check
-        """
         return self._validate_email_url_api_generic(
             email,
             success_condition=lambda res: res.get(
@@ -162,12 +157,6 @@ class EmailValidator(models.Model):
         )
 
     def validate_email_quickemailverification(self, email, **kwargs):
-        """Validate email using QuickEmailVerification API.
-
-        QuickEmailVerification API returns 'valid' for valid emails.
-        API Documentation:
-        https://www.quickemailverification.com/docs/email-verification-api
-        """
         return self._validate_email_url_api_generic(
             email,
             success_condition=lambda res: res.get(
@@ -176,11 +165,6 @@ class EmailValidator(models.Model):
         )
 
     def validate_email_millionverifier(self, email, **kwargs):
-        """Validate email using MillionVerifier API.
-
-        MillionVerifier API returns 'deliverable' status for valid emails.
-        API Documentation: https://millionverifier.com/api-documentation/
-        """
         return self._validate_email_url_api_generic(
             email,
             success_condition=lambda res: res.get('status') == 'deliverable',
@@ -197,106 +181,60 @@ class EmailValidator(models.Model):
 
         if not self.api_key:
             return {
-                'success': False,
-                'message': _('API key is required for connection testing.')
-            }
+                'message': _('API key is required for connection testing.'),
+                'success': False, }
 
-        # Use a test email for validation
-        test_email = 'test@example.com'
-
+        temp_email = False
         try:
-            # Create a temporary email validation record
             temp_email = self.env['kw.email.validation'].sudo().create({
-                'name': test_email
-            })
+                'name': 'test@example.com'})
 
-            # Call the appropriate validation method based on validator name
             method_name = f'validate_email_{self.name}'
-            if hasattr(self, method_name):
-                # Call the method but catch any exceptions
-                try:
-                    getattr(self, method_name)(temp_email)
+            if not hasattr(self, method_name):
+                return {'message': _('Validation method not found for %s'
+                                     '') % self.name,
+                        'success': False, }
 
-                    # Get the latest result for this validation
-                    result = self.env[
-                        'kw.email.validation.result'].sudo().search(
-                        [
-                            ('email_id', '=', temp_email.id),
-                            ('validator_id', '=', self.id)
-                        ], limit=1, order='create_date desc')
+            getattr(self, method_name)(temp_email)
 
-                    if result:
-                        return {
-                            'success': True,
-                            'message': _('Connection successful! '
-                                        'API is working correctly.'),
-                            'details': result.message
-                        }
-                    else:
-                        return {
-                            'success': False,
-                            'message': _('Connection test failed. '
-                                        'Validation result was not recorded.')
-                        }
-                except Exception as e:
-                    return {
-                        'success': False,
-                        'message': _('Connection test failed: %s') % str(e)
-                    }
-            else:
-                return {
-                    'success': False,
-                    'message': _('Validation method not found for %s') % self.name
-                }
+            result = self.env['kw.email.validation.result'].sudo().search([
+                ('email_id', '=', temp_email.id),
+                ('validator_id', '=', self.id)
+            ], limit=1, order='create_date desc')
+
+            if result:
+                return {'message': _('Connection successful! API is '
+                                     'working correctly.'),
+                        'success': True, }
+            return {'message': _('Connection test failed. Validation '
+                                 'result not recorded.'),
+                    'success': False, }
+
         except Exception as e:
-            return {
-                'success': False,
-                'message': _('Error during connection test: %s') % str(e)
-            }
+            return {'message': _('Connection error: %s') % str(e),
+                    'success': False, }
         finally:
-            # Clean up temporary records
-            if 'temp_email' in locals() and temp_email.exists():
+            if temp_email:
                 temp_email.sudo().unlink()
 
     def action_test_connection(self):
-        """Action to test connection with the validator API.
-
-        This method is called from the UI button and displays the result
-        in a notification message.
-        """
         self.ensure_one()
 
-        # Call the test_connection method
         result = self.test_connection()
+        notification_type = 'success' if result['success'] else 'danger'
 
-        # Display notification based on result
-        if result['success']:
-            message = _('Connection successful! API is working correctly.')
-            if result.get('details'):
-                message += '\n\n' + _('Details: %s') % result['details']
-            notification_type = 'success'
-        else:
-            message = _('Connection error: %s') % result['message']
-            notification_type = 'danger'
-
-        # Return notification action
         return {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
                 'title': _('Connection Test Result'),
-                'message': message,
+                'message': result['message'],
                 'sticky': False,
                 'type': notification_type,
             }
         }
 
     def validate_email_clearout(self, email, **kwargs):
-        """Validate email using Clearout API.
-
-        Clearout API returns 'deliverable' status for valid emails.
-        API Documentation: https://docs.clearout.io/email-verifier-api.html
-        """
         return self._validate_email_url_api_generic(
             email,
             method='POST',
@@ -308,11 +246,6 @@ class EmailValidator(models.Model):
         )
 
     def validate_email_mailercheck(self, email, **kwargs):
-        """Validate email using MailerCheck API.
-
-        MailerCheck API returns 'deliverable' status for valid emails.
-        API Documentation: https://developers.mailercheck.com/
-        """
         return self._validate_email_url_api_generic(
             email,
             method='POST',
@@ -326,12 +259,6 @@ class EmailValidator(models.Model):
         )
 
     def validate_email_mailgun(self, email, **kwargs):
-        """Validate email using Mailgun API.
-
-        Mailgun API returns 'deliverable' in result field for valid emails.
-        API Documentation:
-        https://help.mailgun.com/hc/en-us/articles/360010523074-Email-Validations
-        """
         return self._validate_email_url_api_generic(
             email,
             auth=('api', self.api_key),
@@ -403,12 +330,6 @@ class EmailValidator(models.Model):
             return False
 
     def validate_email_zerobounce(self, email, **kwargs):
-        """Validate email using ZeroBounce API.
-
-        ZeroBounce API returns 'valid' status for valid emails.
-        API Documentation:
-        https://www.zerobounce.net/docs/email-validation-api-quickstart/
-        """
         return self._validate_email_url_api_generic(
             email,
             success_condition=lambda res: res.get('status') == 'valid',
