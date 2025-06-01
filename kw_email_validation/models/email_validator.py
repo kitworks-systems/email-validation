@@ -69,6 +69,7 @@ class EmailValidator(models.Model):
         self.store_result(email, is_valid)
         return is_valid
 
+    # pylint: disable=too-many-branches
     def _validate_email_url_api_generic(
             self, email, success_condition=None, **kwargs):
         """Generic method for email validation through API URL.

@@ -41,7 +41,7 @@ class EmailValidationController(http.Controller):
                 validation = validation_model.get_validation(email)
                 if validation:
                     # Validate email using the specified validator
-                    is_valid = validator.validate_email(validation)
+                    validator.validate_email(validation)
                     results.append({
                         'email': email,
                         'state': validation.state,

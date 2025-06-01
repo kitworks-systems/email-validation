@@ -2,7 +2,8 @@
     'name': 'Email Validation - Web Interface',
     'summary': """
         Web interface for bulk email validation
-        Provides a convenient interface for checking multiple email addresses at once.
+        Provides a convenient interface for checking multiple email
+        addresses at once.
     """,
 
     'author': 'Kitworks Systems',

@@ -28,6 +28,7 @@
     'installable': True,
     'auto_install': False,
     'application': False,
+    'post_init_hook': 'post_init_hook',
 
     'images': [
         'static/description/cover.png',

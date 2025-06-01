@@ -48,26 +48,21 @@ class EmailValidationMixin(models.AbstractModel):
                 vals['kw_email_validation_id'] = ev.get_validation(
                     vals.get(self._kw_email_validation_field))
         return super().create(vals_list)
-    
+
     def action_kw_email_validation_validate_email(self):
-        """Manually validate email address.
-        This method can be called from UI to manually trigger email validation.
-        """
         for record in self:
             email_field = getattr(
                 record, self._kw_email_validation_field, False)
             if not email_field:
                 continue
-                
-            # Get validation record
+
             validation = self.env['kw.email.validation'].sudo().get_validation(
                 email_field)
-                
-            # Force validation
+
             if validation:
                 validation.validate_email()
                 record.kw_email_validation_id = validation.id
-                
+
         return {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
