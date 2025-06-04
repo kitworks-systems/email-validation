@@ -1,47 +1,47 @@
-# План розробки модулів валідації електронної пошти
+# Email Validation Modules Development Plan
 
-## Порівняння функціоналу
+## Functionality Comparison
 
-| Функціонал | Наявність | Модуль | Пріоритет доробки (1-5) | Коментар |
+| Functionality | Availability | Module | Development Priority (1-5) | Comment |
 |------------|-----------|--------|-------------------------|----------|
-| Базова валідація | Так | kw_email_validation | - | Основний модуль |
-| Валідація через DNS | Так | kw_email_validation_dnspython | - | Перевірка MX-записів |
-| Валідація через SMTP | Так | kw_email_validation_smtp | - | Перевірка SMTP-сервера |
-| Валідація для контактів | Так | kw_email_validation_contacts | - | - |
-| Валідація для CRM | Так | kw_email_validation_crm | - | - |
-| Валідація для HR | Так | kw_email_validation_hr | - | - |
-| Валідація для рекрутингу | Так | kw_email_validation_hr_recruitment | - | - |
-| Валідація для масових розсилок | Так | kw_email_validation_mass_mailing | - | - |
-| Валідація для подій | Так | kw_email_validation_event | - | - |
-| Інтеграція з NeverBounce API | Так | kw_email_validation | - | Реалізовано детальну обробку відповідей |
-| Інтеграція з QuickEmailVerification API | Так | kw_email_validation | - | Реалізовано обробку різних статусів |
-| Інтеграція з MillionVerifier API | Так | kw_email_validation | - | Реалізовано обробку всіх статусів |
-| Інтеграція з SendPulse API | Так | kw_email_validation | - | Реалізовано двоетапну інтеграцію |
-| Інтеграція з ZeroBounce API | Так | kw_email_validation | - | Реалізовано інтеграцію з підтримкою IP-адреси |
-| Інтеграція з Clearout API | Так | kw_email_validation | - | Реалізовано інтеграцію з Bearer авторизацією |
-| Інтеграція з MailerCheck API | Так | kw_email_validation | - | Реалізовано інтеграцію з авторизацією через X-API-Key |
-| Інтеграція з Mailgun API | Так | kw_email_validation | - | Реалізовано інтеграцію з Basic Auth |
-| Налаштування API-ключів | Так | kw_email_validation | - | - |
-| Ручна перевірка email | Так | Всі модулі | - | Реалізовано через меню дій |
-| Веб-інтерфейс для масової перевірки | Так | kw_email_validation_web | - | Реалізовано веб-інтерфейс |
-| Розширена звітність | Ні | - | 4 | Додати звіти в існуючі модулі |
-| Комерційна модель (пакети перевірок) | Ні | - | 5 | Опціонально |
+| Basic validation | Yes | kw_email_validation | - | Core module |
+| DNS validation | Yes | kw_email_validation_dnspython | - | MX records verification |
+| SMTP validation | Yes | kw_email_validation_smtp | - | SMTP server verification |
+| Validation for contacts | Yes | kw_email_validation_contacts | - | - |
+| Validation for CRM | Yes | kw_email_validation_crm | - | - |
+| Validation for HR | Yes | kw_email_validation_hr | - | - |
+| Validation for recruitment | Yes | kw_email_validation_hr_recruitment | - | - |
+| Validation for mass mailing | Yes | kw_email_validation_mass_mailing | - | - |
+| Validation for events | Yes | kw_email_validation_event | - | - |
+| Integration with NeverBounce API | Yes | kw_email_validation | - | Implemented detailed response processing |
+| Integration with QuickEmailVerification API | Yes | kw_email_validation | - | Implemented processing of different statuses |
+| Integration with MillionVerifier API | Yes | kw_email_validation | - | Implemented processing of all statuses |
+| Integration with SendPulse API | Yes | kw_email_validation | - | Implemented two-stage integration |
+| Integration with ZeroBounce API | Yes | kw_email_validation | - | Implemented integration with IP address support |
+| Integration with Clearout API | Yes | kw_email_validation | - | Implemented integration with Bearer authorization |
+| Integration with MailerCheck API | Yes | kw_email_validation | - | Implemented integration with X-API-Key authorization |
+| Integration with Mailgun API | Yes | kw_email_validation | - | Implemented integration with Basic Auth |
+| API key configuration | Yes | kw_email_validation | - | - |
+| Manual email verification | Yes | All modules | - | Implemented through action menu |
+| Web interface for bulk verification | Yes | kw_email_validation_web | - | Implemented web interface |
+| Extended reporting | No | - | 4 | Add reports to existing modules |
+| Commercial model (verification packages) | No | - | 5 | Optional |
 
-## Завдання для виконання
+## Tasks to Complete
 
-### Завдання 1: Покращити документацію
-- **Опис**: Оновити README.md та додати документацію для кожного модуля
-- **Складність**: Низька
-- **Залежності**: Всі модулі
-- **Файли для створення/зміни**:
+### Task 1: Improve Documentation
+- **Description**: Update README.md and add documentation for each module
+- **Complexity**: Low
+- **Dependencies**: All modules
+- **Files to create/modify**:
   - README.md
   - */README.md
   - kw_email_validation/static/description/index.html
-  - kw_email_validation_*/static/description/index.html (для всіх модулів)
+  - kw_email_validation_*/static/description/index.html (for all modules)
 
-### Додаткові можливості для майбутнього розвитку:
-- Розробити комерційну модель (пакети перевірок)
-- Додати масову валідацію через завантаження CSV/Excel файлів
-- Реалізувати автоматичну валідацію при імпорті даних
-- Додати інтеграцію з іншими API сервісами
-- Покращити регулярний вираз для більш точної валідації email
+### Additional Opportunities for Future Development:
+- Develop a commercial model (verification packages)
+- Add bulk validation through CSV/Excel file uploads
+- Implement automatic validation during data import
+- Add integration with other API services
+- Improve regular expression for more accurate email validation

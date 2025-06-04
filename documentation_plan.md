@@ -1,147 +1,147 @@
-# План документування проекту Email Validation
+# Email Validation Project Documentation Plan
 
-## 1. Загальна структура документації
+## 1. General Documentation Structure
 
-### 1.1. Технічна документація
-- Архітектура системи
-- Опис моделей даних
-- API та інтеграції
-- Налаштування та конфігурація
-- Розширення системи
+### 1.1. Technical Documentation
+- System architecture
+- Data models description
+- API and integrations
+- Setup and configuration
+- System extensions
 
-### 1.2. Користувацька документація
-- Інструкції з встановлення
-- Посібник користувача
-- Посібник адміністратора
-- Часті запитання (FAQ)
+### 1.2. User Documentation
+- Installation instructions
+- User guide
+- Administrator guide
+- Frequently Asked Questions (FAQ)
 
-### 1.3. Документація для розробників
-- Керівництво з розробки
-- Стандарти кодування
-- Процес тестування
-- Внесення змін (Contributing)
+### 1.3. Developer Documentation
+- Development guide
+- Coding standards
+- Testing process
+- Contributing guidelines
 
-## 2. Пріоритетні завдання
+## 2. Priority Tasks
 
-### 2.1. Базова документація (Висока пріоритетність)
-- [ ] Оновлення головного README.md з детальним описом проекту
-- [ ] Документування базового модуля kw_email_validation
-- [ ] Опис API сервісів валідації та їх інтеграції
-- [ ] Інструкції з встановлення та налаштування
+### 2.1. Basic Documentation (High Priority)
+- [ ] Update the main README.md with detailed project description
+- [ ] Document the base module kw_email_validation
+- [ ] Description of validation API services and their integration
+- [ ] Installation and configuration instructions
 
-### 2.2. Документація модулів (Середня пріоритетність)
-- [ ] Документування модулів інтеграції (CRM, Contacts, HR, тощо)
-- [ ] Опис функціональності кожного модуля
-- [ ] Приклади використання
+### 2.2. Module Documentation (Medium Priority)
+- [ ] Document integration modules (CRM, Contacts, HR, etc.)
+- [ ] Description of each module's functionality
+- [ ] Usage examples
 
-### 2.3. Розширена документація (Низька пріоритетність)
-- [ ] Створення детальних діаграм архітектури
-- [ ] Документування процесів розробки та тестування
-- [ ] Створення відеоінструкцій
+### 2.3. Extended Documentation (Low Priority)
+- [ ] Create detailed architecture diagrams
+- [ ] Document development and testing processes
+- [ ] Create video tutorials
 
-## 3. Структура документації для кожного модуля
+## 3. Documentation Structure for Each Module
 
 ### 3.1. README.md
-- Короткий опис модуля
-- Залежності
-- Основна функціональність
-- Знімки екрану (за необхідності)
+- Brief module description
+- Dependencies
+- Main functionality
+- Screenshots (if necessary)
 
-### 3.2. Технічна документація
-- Опис моделей
-- Опис методів
-- Опис представлень
-- Опис бізнес-логіки
+### 3.2. Technical Documentation
+- Models description
+- Methods description
+- Views description
+- Business logic description
 
-### 3.3. Користувацька документація
-- Інструкції з налаштування
-- Приклади використання
-- Часті запитання
+### 3.3. User Documentation
+- Configuration instructions
+- Usage examples
+- Frequently asked questions
 
-## 4. Документи для створення
+## 4. Documents to Create
 
-### 4.1. Загальні документи
-- [ ] `architecture.md` - Архітектура системи
-- [ ] `installation.md` - Інструкції з встановлення
-- [ ] `configuration.md` - Налаштування системи
-- [ ] `api_reference.md` - Опис API
+### 4.1. General Documents
+- [ ] `architecture.md` - System architecture
+- [ ] `installation.md` - Installation instructions
+- [ ] `configuration.md` - System configuration
+- [ ] `api_reference.md` - API description
 
-### 4.2. Документи для базового модуля
-- [ ] `kw_email_validation/docs/models.md` - Опис моделей
-- [ ] `kw_email_validation/docs/validators.md` - Опис валідаторів
-- [ ] `kw_email_validation/docs/integration.md` - Інтеграція з іншими модулями
+### 4.2. Documents for the Base Module
+- [ ] `kw_email_validation/docs/models.md` - Models description
+- [ ] `kw_email_validation/docs/validators.md` - Validators description
+- [ ] `kw_email_validation/docs/integration.md` - Integration with other modules
 
-### 4.3. Документи для модулів інтеграції
-- [ ] Шаблон README.md для кожного модуля інтеграції
-- [ ] Опис специфічних функцій кожного модуля
+### 4.3. Documents for Integration Modules
+- [ ] README.md template for each integration module
+- [ ] Description of specific functions for each module
 
-## 5. Формат та стиль документації
+## 5. Documentation Format and Style
 
-### 5.1. Мова
-- Основна документація: англійська
-- Додаткова документація: українська (за необхідності)
+### 5.1. Language
+- Main documentation: English
+- Additional documentation: Ukrainian (if necessary)
 
-### 5.2. Формат
-- Markdown для всіх документів
-- Діаграми у форматі PlantUML або Mermaid
-- Знімки екрану у форматі PNG
+### 5.2. Format
+- Markdown for all documents
+- Diagrams in PlantUML or Mermaid format
+- Screenshots in PNG format
 
-### 5.3. Стиль
-- Чітка структура з використанням заголовків
-- Короткі та зрозумілі речення
-- Приклади коду з підсвіткою синтаксису
-- Перехресні посилання між документами
+### 5.3. Style
+- Clear structure using headings
+- Short and clear sentences
+- Code examples with syntax highlighting
+- Cross-references between documents
 
-## 6. Процес документування
+## 6. Documentation Process
 
-### 6.1. Етапи
-1. Збір інформації про модулі
-2. Створення шаблонів документів
-3. Наповнення документів змістом
-4. Перевірка та редагування
-5. Публікація документації
+### 6.1. Stages
+1. Gathering information about modules
+2. Creating document templates
+3. Filling documents with content
+4. Review and editing
+5. Documentation publication
 
-### 6.2. Інструменти
-- Git для контролю версій документації
-- Markdown редактор (VS Code, тощо)
-- Інструменти для створення діаграм
+### 6.2. Tools
+- Git for documentation version control
+- Markdown editor (VS Code, etc.)
+- Tools for creating diagrams
 
-### 6.3. Відповідальні особи
-- Технічний автор: [Ім'я]
-- Технічний рецензент: [Ім'я]
-- Розробники: [Імена]
+### 6.3. Responsible Persons
+- Technical writer: [Name]
+- Technical reviewer: [Name]
+- Developers: [Names]
 
-## 7. Графік роботи
+## 7. Work Schedule
 
-### 7.1. Фаза 1: Базова документація (2 тижні)
-- Тиждень 1: Збір інформації та створення шаблонів
-- Тиждень 2: Наповнення базових документів
+### 7.1. Phase 1: Basic Documentation (2 weeks)
+- Week 1: Information gathering and template creation
+- Week 2: Filling basic documents
 
-### 7.2. Фаза 2: Документація модулів (3 тижні)
-- Тиждень 3-4: Документування модулів інтеграції
-- Тиждень 5: Перевірка та редагування
+### 7.2. Phase 2: Module Documentation (3 weeks)
+- Weeks 3-4: Documenting integration modules
+- Week 5: Review and editing
 
-### 7.3. Фаза 3: Розширена документація (2 тижні)
-- Тиждень 6-7: Створення розширеної документації
+### 7.3. Phase 3: Extended Documentation (2 weeks)
+- Weeks 6-7: Creating extended documentation
 
-## 8. Підтримка та оновлення документації
+## 8. Documentation Maintenance and Updates
 
-### 8.1. Процес оновлення
-- Оновлення документації при внесенні змін у код
-- Регулярний перегляд та оновлення (щоквартально)
+### 8.1. Update Process
+- Updating documentation when making code changes
+- Regular review and updates (quarterly)
 
-### 8.2. Відстеження змін
-- Використання Git для відстеження змін у документації
-- Додавання коментарів до комітів з описом змін у документації
+### 8.2. Change Tracking
+- Using Git to track changes in documentation
+- Adding comments to commits with descriptions of documentation changes
 
-## 9. Додаткові ресурси
+## 9. Additional Resources
 
-### 9.1. Шаблони
-- Шаблон README.md
-- Шаблон опису моделі
-- Шаблон опису API
+### 9.1. Templates
+- README.md template
+- Model description template
+- API description template
 
-### 9.2. Посилання
-- Odoo документація
-- Стандарти документування Python-коду
-- Керівництво зі стилю Markdown
+### 9.2. References
+- Odoo documentation
+- Python code documentation standards
+- Markdown style guide

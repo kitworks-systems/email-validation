@@ -6,7 +6,7 @@
     """,
 
     'author': 'Kitworks Systems',
-    'website': 'https://kitworks.systems/',
+    'website': 'https://github.com/kitworks-systems/email-validation',
 
     'category': 'Customizations',
     'license': 'LGPL-3',

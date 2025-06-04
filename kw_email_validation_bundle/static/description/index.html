@@ -1,0 +1,140 @@
+<section style="max-width: 896px; margin: 0 auto;">
+    <div style="text-align: center;">
+        <h1 style="color:#875A7B;">Email Validation Bundle</h1>
+    </div>
+    <div style="text-align: center;">
+        <p>
+            <a href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html">
+                <img alt="License: LGPL-3"
+                     src="https://img.shields.io/badge/license-LGPL--3-blue.png"/></a>
+            <a href="https://kitworks.systems/">
+                <img alt="Kitworks Systems"
+                     src="https://img.shields.io/badge/maintainer-Kitworks-purple.png"/></a>
+        </p>
+        <p><br></p>
+    </div>
+</section>
+
+<section style="margin: 0 auto; max-width: 896px;">
+    <div>
+        <p>This module provides a complete bundle of all email validation modules for Odoo. 
+           It's designed as a convenience package that installs the base email validation module 
+           along with all integration modules, giving you comprehensive email validation capabilities 
+           across your entire Odoo system with a single installation.</p>
+
+        <p>Key features include:</p>
+        <ul>
+            <li>One-click installation of all email validation modules</li>
+            <li>Complete validation coverage for all standard Odoo modules</li>
+            <li>Multiple validation methods (API, DNS, SMTP)</li>
+            <li>Web interface for manual validation</li>
+            <li>Consistent validation experience across all Odoo modules</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Included Modules</h3>
+        
+        <h4>Core Functionality</h4>
+        <ul>
+            <li><b>kw_email_validation</b>: Base module with core validation functionality</li>
+            <li><b>kw_email_validation_web</b>: Web interface for email validation</li>
+        </ul>
+        
+        <h4>Validation Methods</h4>
+        <ul>
+            <li><b>kw_email_validation_dnspython</b>: DNS-based validation</li>
+            <li><b>kw_email_validation_smtp</b>: SMTP-based validation</li>
+        </ul>
+        
+        <h4>Module Integrations</h4>
+        <ul>
+            <li><b>kw_email_validation_contacts</b>: Validation for contacts (res.partner)</li>
+            <li><b>kw_email_validation_crm</b>: Validation for CRM leads</li>
+            <li><b>kw_email_validation_hr</b>: Validation for employees</li>
+            <li><b>kw_email_validation_hr_recruitment</b>: Validation for job applicants</li>
+            <li><b>kw_email_validation_event</b>: Validation for event registrations</li>
+            <li><b>kw_email_validation_mass_mailing</b>: Validation for mailing contacts</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Benefits of the Bundle</h3>
+        <ul>
+            <li><b>Simplified Installation:</b> Install all modules with a single click</li>
+            <li><b>Consistent Configuration:</b> Unified configuration across all modules</li>
+            <li><b>Complete Coverage:</b> Validate emails in all standard Odoo modules</li>
+            <li><b>Multiple Validation Methods:</b> Use the best validation method for each scenario</li>
+            <li><b>Comprehensive Solution:</b> Address all email validation needs in one package</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Technical Details</h3>
+        <p>
+            This is a meta-module that depends on all other email validation modules. 
+            It doesn't add any functionality itself but ensures that all email validation 
+            modules are installed and properly configured.
+        </p>
+        
+        <h4>Implementation</h4>
+        <ul>
+            <li>Automatic validation of email addresses across all supported models</li>
+            <li>Visual indicators for validation status in all relevant forms and lists</li>
+            <li>Manual validation through action menus where applicable</li>
+            <li>Automatic validation of existing emails upon module installation</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Configuration</h3>
+        <p>
+            After installation, you'll need to configure at least one validation service:
+        </p>
+        <ol>
+            <li>Go to Email Validation → Configuration → Validators</li>
+            <li>Select a validator and enter your API key (if using an API-based service)</li>
+            <li>Set the validator as active</li>
+        </ol>
+        <p>
+            For more detailed configuration options, refer to the documentation of the individual modules.
+        </p>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Bug Tracker</h3>
+        <p>
+            Bugs are tracked on <a href="https://kitworks.systems/requests">https://kitworks.systems/requests</a>.
+            In case of trouble, please check there if your issue has already
+            been reported.
+        </p>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto; text-align: center;">
+    <div>
+        <h2 style="color: #138c33">Maintainer</h2>
+        <p>KitWorks Systems. Our web site: <a href="https://kitworks.systems">https://kitworks.systems</a></p>
+
+        <p>
+            We can provide you further Odoo Support, Odoo implementation,
+            Odoo customization, Odoo 3rd Party development and integration
+            software, consulting services. Our main goal is to provide the best
+            quality product for you.
+        </p>
+        <p>
+            For any questions
+            <a href="mailto:info@kitworks.systems">contact us</a>.
+        </p>
+    </div>
+</section>
