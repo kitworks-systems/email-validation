@@ -142,26 +142,3 @@ This document contains information about email validation services that are used
 4. **For highest accuracy**: ZeroBounce with AI-scoring.
 5. **For spam trap detection**: Clearout, MailerCheck or Mailgun - have advanced spam trap detection capabilities.
 6. **For optimal price/quality ratio**: MailerCheck or Mailgun - high accuracy at a reasonable price.
-
-## Odoo Integration
-
-For integration with Odoo, you need to:
-
-1. Add a record in `kw_email_validation/data/email_validator.xml`:
-   ```xml
-   <record id="kw_email_validator_SERVICE_NAME" model="kw.email.validator">
-       <field name="name">SERVICE_NAME</field>
-       <field name="url">SERVICE_URL</field>
-   </record>
-   ```
-
-2. Add a method in `kw_email_validation/models/email_validator.py`:
-   ```python
-   def validate_email_SERVICE_NAME(self, email, **kwargs):
-       # Method implementation
-       return is_valid
-   ```
-
-3. Add API key settings in `kw_email_validation/models/res_config_settings.py`.
-
-4. Add a field for the API key in `kw_email_validation/views/res_config_settings_views.xml`.

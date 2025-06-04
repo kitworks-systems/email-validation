@@ -49,23 +49,6 @@ The system supports integration with the following external validation services:
 
 Detailed information about validation services can be found in [validation_service.md](validation_service.md).
 
-## Installation
-
-1. Clone the repository into your Odoo addons directory:
-   ```bash
-   git clone https://github.com/kitworks-systems/email-validation.git
-   ```
-
-2. Update the module list in Odoo
-
-3. Install the base module and required integration modules:
-   - For basic functionality: `kw_email_validation`
-   - For integration with contacts: `kw_email_validation_contacts`
-   - For integration with CRM: `kw_email_validation_crm`
-   - And so on...
-
-4. To install all modules together, use the metapackage: `kw_email_validation_bundle`
-
 ## Configuration
 
 1. Go to menu **Settings > Technical > Email Validation > Validators**
