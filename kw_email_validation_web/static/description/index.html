@@ -1,0 +1,160 @@
+<section style="max-width: 896px; margin: 0 auto;">
+    <div style="text-align: center;">
+        <h1 style="color:#875A7B;">Email Validation Web Interface</h1>
+    </div>
+    <div style="text-align: center;">
+        <p>
+            <a href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html">
+                <img alt="License: LGPL-3"
+                     src="https://img.shields.io/badge/license-LGPL--3-blue.png"/></a>
+            <a href="https://kitworks.systems/">
+                <img alt="Kitworks Systems"
+                     src="https://img.shields.io/badge/maintainer-Kitworks-purple.png"/></a>
+        </p>
+        <p><br></p>
+    </div>
+</section>
+
+<section style="margin: 0 auto; max-width: 896px;">
+    <div>
+        <p>This module extends the base email validation functionality with a dedicated web interface 
+           for email validation. It provides a user-friendly way to validate individual email addresses 
+           or perform bulk validation, making it easier to manage and verify email addresses across your 
+           Odoo system.</p>
+
+        <p>Key features include:</p>
+        <ul>
+            <li>Dedicated web interface for email validation</li>
+            <li>Individual email address validation</li>
+            <li>Bulk validation through file upload</li>
+            <li>Detailed validation results and statistics</li>
+            <li>Export validation results to CSV</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Usage</h3>
+        
+        <h4>Accessing the Web Interface</h4>
+        <p>The email validation web interface can be accessed from:</p>
+        <ol>
+            <li>The main menu under "Email Validation"</li>
+            <li>Direct URL: /email_validation</li>
+        </ol>
+        
+        <h4>Individual Email Validation</h4>
+        <p>To validate a single email address:</p>
+        <ol>
+            <li>Enter the email address in the provided field</li>
+            <li>Click "Validate"</li>
+            <li>View the validation result with detailed information</li>
+        </ol>
+        
+        <h4>Bulk Validation</h4>
+        <p>To validate multiple email addresses at once:</p>
+        <ol>
+            <li>Prepare a CSV file with email addresses (one per line)</li>
+            <li>Upload the file using the bulk validation form</li>
+            <li>Start the validation process</li>
+            <li>View results and download the validation report</li>
+        </ol>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Technical Details</h3>
+        <ul>
+            <li><b>Implementation:</b> 
+                <ul>
+                    <li>Uses Odoo's web controller framework for the interface</li>
+                    <li>Integrates with the base validation system for processing</li>
+                    <li>Provides RESTful API endpoints for validation</li>
+                </ul>
+            </li>
+            <li><b>Performance:</b> 
+                <ul>
+                    <li>Asynchronous processing for bulk validation</li>
+                    <li>Progress tracking for long-running validation jobs</li>
+                </ul>
+            </li>
+            <li><b>Security:</b> 
+                <ul>
+                    <li>Access control based on Odoo security groups</li>
+                    <li>Rate limiting to prevent abuse</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Benefits</h3>
+        <ul>
+            <li><b>User-Friendly:</b> Simple interface for non-technical users</li>
+            <li><b>Centralized Management:</b> Single point for all email validation needs</li>
+            <li><b>Detailed Reporting:</b> Comprehensive validation results and statistics</li>
+            <li><b>Time-Saving:</b> Bulk validation capabilities for large datasets</li>
+            <li><b>Integration:</b> Works with configured validation services</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Use Cases</h3>
+        <ul>
+            <li><b>List Cleaning:</b> Validate and clean marketing email lists</li>
+            <li><b>Data Import:</b> Validate email addresses before importing into Odoo</li>
+            <li><b>Customer Data Verification:</b> Verify customer email addresses</li>
+            <li><b>Contact Database Maintenance:</b> Regular validation of stored email addresses</li>
+        </ul>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Dependencies</h3>
+        <ul>
+            <li><b>kw_email_validation</b>: Base module providing core validation functionality</li>
+            <li><b>web</b>: Odoo Web framework</li>
+        </ul>
+        
+        <h3>Configuration</h3>
+        <p>
+            No additional configuration is required for this module.
+        </p>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto;">
+    <div>
+        <h3>Bug Tracker</h3>
+        <p>
+            Bugs are tracked on <a href="https://kitworks.systems/requests">https://kitworks.systems/requests</a>.
+            In case of trouble, please check there if your issue has already
+            been reported.
+        </p>
+    </div>
+</section>
+
+<section style="max-width: 896px; margin: 0 auto; text-align: center;">
+    <div>
+        <h2 style="color: #138c33">Maintainer</h2>
+        <p>KitWorks Systems. Our web site: <a href="https://kitworks.systems">https://kitworks.systems</a></p>
+
+        <p>
+            We can provide you further Odoo Support, Odoo implementation,
+            Odoo customization, Odoo 3rd Party development and integration
+            software, consulting services. Our main goal is to provide the best
+            quality product for you.
+        </p>
+        <p>
+            For any questions
+            <a href="mailto:info@kitworks.systems">contact us</a>.
+        </p>
+    </div>
+</section>

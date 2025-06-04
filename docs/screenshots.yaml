@@ -1,0 +1,152 @@
+---
+# Конфігурація скріншотів для документації модулів валідації email
+version: 1.0
+project: email-validation
+output_dir: docs/images
+
+# Базовий модуль kw_email_validation
+base_module:
+  - name: validators_list
+    description: "Список валідаторів email"
+    path: "/web#action=kw_email_validation.action_kw_email_validator_view"
+    wait_for: ".o_list_view"
+    filename: "validators_list.png"
+    
+  - name: validator_form
+    description: "Форма налаштування валідатора"
+    path: "/web#model=kw.email.validator&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "validator_form.png"
+    
+  - name: test_connection
+    description: "Тестування з'єднання з API"
+    path: "/web#model=kw.email.validator&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    click: ".o_form_button_test_connection"
+    wait_for: ".o_notification"
+    filename: "test_connection.png"
+
+# Модуль kw_email_validation_contacts
+contacts_module:
+  - name: contacts_list
+    description: "Список контактів з відображенням статусу валідації"
+    path: "/web#action=contacts.action_contacts"
+    wait_for: ".o_list_view"
+    filename: "contacts_list.png"
+    
+  - name: contact_form
+    description: "Форма контакту з відображенням статусу валідації"
+    path: "/web#model=res.partner&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "contact_form.png"
+    
+  - name: manual_validation
+    description: "Меню дій для ручної перевірки email"
+    path: "/web#model=res.partner&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    click: ".o_form_button_action_menu"
+    wait_for: ".dropdown-menu"
+    filename: "manual_validation.png"
+
+# Модуль kw_email_validation_crm
+crm_module:
+  - name: leads_list
+    description: "Список лідів CRM з відображенням статусу валідації"
+    path: "/web#action=crm.crm_lead_all_leads"
+    wait_for: ".o_list_view"
+    filename: "leads_list.png"
+    
+  - name: lead_form
+    description: "Форма ліда CRM з відображенням статусу валідації"
+    path: "/web#model=crm.lead&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "lead_form.png"
+
+# Модуль kw_email_validation_hr
+hr_module:
+  - name: employees_list
+    description: "Список співробітників з відображенням статусу валідації"
+    path: "/web#action=hr.open_view_employee_list"
+    wait_for: ".o_list_view"
+    filename: "employees_list.png"
+    
+  - name: employee_form
+    description: "Форма співробітника з відображенням статусу валідації"
+    path: "/web#model=hr.employee&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "employee_form.png"
+
+# Модуль kw_email_validation_event
+event_module:
+  - name: registrations_list
+    description: "Список реєстрацій на події з відображенням статусу валідації"
+    path: "/web#action=event.action_event_registration"
+    wait_for: ".o_list_view"
+    filename: "registrations_list.png"
+    
+  - name: registration_form
+    description: "Форма реєстрації на подію з відображенням статусу валідації"
+    path: "/web#model=event.registration&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "registration_form.png"
+
+# Модуль kw_email_validation_hr_recruitment
+recruitment_module:
+  - name: applicants_list
+    description: "Список кандидатів на вакансії з відображенням статусу валідації"
+    path: "/web#action=hr_recruitment.action_hr_job_applications"
+    wait_for: ".o_list_view"
+    filename: "applicants_list.png"
+    
+  - name: applicant_form
+    description: "Форма кандидата на вакансію з відображенням статусу валідації"
+    path: "/web#model=hr.applicant&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "applicant_form.png"
+
+# Модуль kw_email_validation_mass_mailing
+mass_mailing_module:
+  - name: mailing_contacts_list
+    description: "Список контактів розсилки з відображенням статусу валідації"
+    path: "/web#action=mass_mailing.action_view_mass_mailing_contacts"
+    wait_for: ".o_list_view"
+    filename: "mailing_contacts_list.png"
+    
+  - name: mailing_contact_form
+    description: "Форма контакту розсилки з відображенням статусу валідації"
+    path: "/web#model=mailing.contact&id=1&view_type=form"
+    wait_for: ".o_form_view"
+    filename: "mailing_contact_form.png"
+
+# Масова валідація
+bulk_validation:
+  - name: bulk_validation
+    description: "Масова валідація email-адрес"
+    path: "/web#action=contacts.action_contacts"
+    wait_for: ".o_list_view"
+    select_rows: [1, 2, 3]
+    click: ".o_list_selection_box .o_dropdown_toggler_btn"
+    wait_for: ".dropdown-menu"
+    filename: "bulk_validation.png"
+
+# Веб-інтерфейс для масової перевірки (якщо встановлено модуль kw_email_validation_web)
+web_interface:
+  - name: web_upload
+    description: "Сторінка завантаження списку email-адрес"
+    path: "/email_validation/upload"
+    wait_for: ".kw_email_validation_upload_form"
+    filename: "web_upload.png"
+    
+  - name: web_results
+    description: "Сторінка результатів перевірки"
+    path: "/email_validation/results"
+    wait_for: ".kw_email_validation_results"
+    filename: "web_results.png"
+    
+  - name: web_export
+    description: "Експорт результатів"
+    path: "/email_validation/results"
+    wait_for: ".kw_email_validation_results"
+    click: ".kw_email_validation_export_button"
+    wait_for: ".dropdown-menu"
+    filename: "web_export.png"
