@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Action for opening the email validation web interface -->
+    <record id="kw_email_validation_web_action" model="ir.actions.act_url">
+        <field name="name">Bulk Email Validation</field>
+        <field name="url">/email_validation/validate</field>
+        <field name="target">self</field>
+    </record>
+
     <menuitem id="kw_email_validation_main_menu"
               parent="base.menu_custom"
               name="Email Validation" 
@@ -14,14 +21,7 @@
 
     <menuitem id="kw_email_validation_settings_main_menu"
               parent="kw_email_validation_main_menu"
-              groups="group_kw_email_validation_manager,group_kw_email_validation_admin"
+              groups="kw_email_validation.group_kw_email_validation_manager,kw_email_validation.group_kw_email_validation_admin"
               name="Settings" 
               sequence="9999"/>
-
-    <!-- Action for opening the email validation web interface -->
-    <record id="kw_email_validation_web_action" model="ir.actions.act_url">
-        <field name="name">Bulk Email Validation</field>
-        <field name="url">/email_validation/validate</field>
-        <field name="target">self</field>
-    </record>
 </odoo>

@@ -1,12 +1,14 @@
 {
     'name': 'Email Validation',
     'summary': """
-        Advanced email validation system for Odoo | Email verification | Email checking
-        Comprehensive solution for email validation, including syntax checking, domain verification, 
-        SMTP validation, DNS validation, regex validation, and integration with external validation services: 
-        NeverBounce, QuickEmailVerification, MillionVerifier, Clearout, MailerCheck, Mailgun, SendPulse, ZeroBounce.
-        Email address validation, email verification service, email checker, email address checker, 
-        email list cleaning, email bounce prevention, bulk email validation, email deliverability.
+        Advanced email validation system for Odoo | Email verification
+        Comprehensive solution for email validation, including syntax checking,
+        domain verification, SMTP validation, DNS validation, regex validation,
+        and integration with external validation services: NeverBounce,
+        QuickEmailVerification, MillionVerifier, Clearout, MailerCheck,
+        Mailgun, SendPulse, ZeroBounce. Email validation, verification service,
+        email checker, address checker, list cleaning, bounce prevention,
+        bulk validation, email deliverability.
     """,
 
     'author': 'Kitworks Systems',

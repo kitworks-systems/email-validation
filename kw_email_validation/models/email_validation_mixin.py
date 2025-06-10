@@ -36,8 +36,10 @@ class EmailValidationMixin(models.AbstractModel):
     def write(self, vals):
         if self._kw_email_validation_field in vals:
             ev = self.env['kw.email.validation'].sudo()
-            vals['kw_email_validation_id'] = ev.get_validation(
+            validation = ev.get_validation(
                 vals.get(self._kw_email_validation_field))
+            vals['kw_email_validation_id'] = (
+                validation.id if validation else False)
         return super().write(vals)
 
     @api.model_create_multi
@@ -45,8 +47,10 @@ class EmailValidationMixin(models.AbstractModel):
         for vals in vals_list:
             if self._kw_email_validation_field in vals:
                 ev = self.env['kw.email.validation'].sudo()
-                vals['kw_email_validation_id'] = ev.get_validation(
+                validation = ev.get_validation(
                     vals.get(self._kw_email_validation_field))
+                vals['kw_email_validation_id'] = (
+                    validation.id if validation else False)
         return super().create(vals_list)
 
     def action_kw_email_validation_validate_email(self):

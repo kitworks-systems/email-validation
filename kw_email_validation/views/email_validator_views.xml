@@ -34,9 +34,10 @@
                                 <field name="api_key" placeholder="Enter API Key"
                                        attrs="{'invisible': [('is_api_key_visible','=',True)]}"/>
                                 <button name="show_api_key" icon="fa-eye" type="object"
-                                        class="oe_link"
+                                        class="oe_link" title="Show API Key"
                                         attrs="{'invisible': [('is_api_key_visible','=',True)]}"/>
                                 <button name="hide_api_key" icon="fa-eye-slash" type="object" class="oe_link"
+                                        title="Hide API Key"
                                         attrs="{'invisible': [('is_api_key_visible','=',False)]}"/>
                             </div>
                         </group>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
     <record id="module_category_kw_email_validation" model="ir.module.category">
-        <field name="name">ChatBot v3</field>
+        <field name="name">Email Validation</field>
         <field name="sequence">30</field>
     </record>
 

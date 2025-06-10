@@ -11,7 +11,7 @@ class EmailValidationResult(models.Model):
     _description = 'Email Validation Result'
 
     name = fields.Char(
-        string='Email', )
+        string='Email Address', )
     email_id = fields.Many2one(
         comodel_name='kw.email.validation',
         required=True,

@@ -37,6 +37,7 @@ class EmailValidator(models.Model):
     api_key = fields.Char()
 
     api_key_visible = fields.Char(
+        string='API Key Value',
         related='api_key', )
     is_api_key_visible = fields.Boolean(
         store=False, )
@@ -65,7 +66,7 @@ class EmailValidator(models.Model):
         })
 
     def validate_email_regexp(self, email, **kwargs):
-        is_valid = re.match(fr'{self.regexp}', email.name)
+        is_valid = bool(re.match(fr'{self.regexp}', email.name))
         self.store_result(email, is_valid)
         return is_valid
 
@@ -145,7 +146,8 @@ class EmailValidator(models.Model):
             return is_valid
 
         except Exception as e:
-            _logger.debug('Error validating email with %s: %s', self.name, e)
+            _logger.debug('Error validating email with %s: %s'
+                          '', self.name, e)
             self.store_result(email, False)
             return False
 
@@ -215,7 +217,10 @@ class EmailValidator(models.Model):
             return {'message': _('Connection error: %s') % str(e),
                     'success': False, }
         finally:
-            if temp_email:
+            if temp_email and hasattr(temp_email, 'result_ids'):
+                # Delete related validation results first to avoid foreign key
+                # constraint violation
+                temp_email.result_ids.sudo().unlink()
                 temp_email.sudo().unlink()
 
     def action_test_connection(self):
