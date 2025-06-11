@@ -4,10 +4,10 @@
         <field name="name">kw.email.validation.tree</field>
         <field name="model">kw.email.validation</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" string="Email"/>
                 <field name="state" string="Status"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -30,12 +30,12 @@
                     <notebook>
                         <page string="Validation Results">
                             <field name="result_ids" nolabel="1">
-                                <tree>
+                                <list>
                                     <field name="validator_id" string="Validator"/>
                                     <field name="is_valid" string="Is Valid" widget="boolean_button" options="{'terminology': {'string_true': 'Valid', 'string_false': 'Invalid'}}"/>
                                     <field name="message" string="Message"/>
                                     <field name="create_date" string="Date" readonly="1"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -65,7 +65,7 @@
         <field name="name">Email Validations</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kw.email.validation</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_kw_email_validation_search"/>
     </record>
 
