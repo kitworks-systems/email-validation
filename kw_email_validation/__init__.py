@@ -1,10 +1,7 @@
 from . import models
 
 
-def post_init_hook(cr, registry, model_name, email_field):
-    from odoo import api, SUPERUSER_ID
-
-    env = api.Environment(cr, SUPERUSER_ID, {})
+def post_init_hook(env, model_name, email_field):
     records = env[model_name].search([(email_field, 'not in', [False, ''])])
 
     for record in records:

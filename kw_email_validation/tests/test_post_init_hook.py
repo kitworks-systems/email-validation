@@ -17,10 +17,10 @@ class TestPostInitHook(TransactionCase):
         sig = inspect.signature(post_init_hook)
         params = list(sig.parameters.keys())
 
-        # Should have 4 parameters: cr, registry, model_name, email_field
-        self.assertEqual(len(params), 4)
+        # Should have 3 parameters: env, model_name, email_field
+        self.assertEqual(len(params), 3)
         self.assertEqual(params,
-                         ['cr', 'registry', 'model_name', 'email_field'])
+                         ['env', 'model_name', 'email_field'])
 
     def test_post_init_hook_is_function(self):
         """Test that post_init_hook is a function with proper attributes."""
@@ -53,8 +53,7 @@ class TestPostInitHook(TransactionCase):
 
         # Test with a model that doesn't exist - should not raise errors
         try:
-            post_init_hook(self.env.cr, self.env.registry,
-                           'nonexistent.model', 'email')
+            post_init_hook(self.env, 'nonexistent.model', 'email')
         except Exception as e:
             # Should fail gracefully, not crash
             self.assertIn('nonexistent.model', str(e))
@@ -64,12 +63,8 @@ class TestPostInitHook(TransactionCase):
         # Read the function source to verify it imports required modules
         source = inspect.getsource(post_init_hook)
 
-        # Should import api and SUPERUSER_ID from odoo
-        self.assertIn('from odoo import api', source)
-        self.assertIn('SUPERUSER_ID', source)
-
-        # Should create Environment
-        self.assertIn('api.Environment', source)
+        # Should work with env parameter directly
+        # (no more api.Environment creation)
 
         # Should search for records
         self.assertIn('search', source)
