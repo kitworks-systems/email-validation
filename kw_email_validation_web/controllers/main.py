@@ -64,7 +64,7 @@ class EmailValidationController(http.Controller):
                 'results': results,
             })
 
-    @http.route('/email_validation/validate_ajax', type='json',
+    @http.route('/email_validation/validate_ajax', type='jsonrpc',
                 auth='user', website=True, csrf=True)
     def validate_email_ajax(self, **post):
         """AJAX endpoint for validating a single email."""
