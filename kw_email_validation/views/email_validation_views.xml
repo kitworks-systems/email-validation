@@ -53,10 +53,7 @@
                 <filter string="Valid" name="valid" domain="[('state', '=', 'valid')]"/>
                 <filter string="Invalid" name="invalid" domain="[('state', '=', 'invalid')]"/>
                 <filter string="Pending" name="pending" domain="[('state', '=', 'pending')]"/>
-                <separator/>
-                <group expand="0" string="Group By">
-                    <filter string="Status" name="group_by_state" context="{'group_by':'state'}"/>
-                </group>
+                <filter string="Status" name="group_by_state" context="{'group_by':'state'}"/>
             </search>
         </field>
     </record>

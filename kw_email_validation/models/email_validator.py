@@ -42,8 +42,10 @@ class EmailValidator(models.Model):
     is_api_key_visible = fields.Boolean(
         store=False, )
 
-    _sql_constraints = [
-        ('name_uniq', 'UNIQUE(name)', 'Validator name must be unique!'), ]
+    _name_uniq = models.Constraint(
+        'UNIQUE(name)',
+        'Validator name must be unique!',
+    )
 
     def show_api_key(self):
         self.update({'is_api_key_visible': True})

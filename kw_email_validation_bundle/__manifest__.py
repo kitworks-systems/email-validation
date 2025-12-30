@@ -39,7 +39,7 @@
 
     'category': 'Customizations',
     'license': 'LGPL-3',
-    'version': '18.0.1.0.1',
+    'version': '19.0.1.0.1',
 
     'depends': [
         'kw_email_validation',

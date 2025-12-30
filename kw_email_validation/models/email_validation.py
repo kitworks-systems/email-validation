@@ -38,9 +38,10 @@ class EmailValidation(models.Model):
         string='Validation Results',
         readonly=True, )
 
-    _sql_constraints = [
-        ('email_uniq', 'UNIQUE(name)', 'Email must be unique!')
-    ]
+    _email_uniq = models.Constraint(
+        'UNIQUE(name)',
+        'Email must be unique!',
+    )
 
     @api.model
     def get_validation(self, email: str) -> str:
