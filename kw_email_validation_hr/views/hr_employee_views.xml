@@ -15,4 +15,20 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_employee_list_inherit_email_validation" model="ir.ui.view">
+        <field name="name">hr.employee.list.inherit.email.validation</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="kw_email_validation_state"
+                       widget="badge"
+                       optional="show"
+                       decoration-success="kw_email_validation_state == 'valid'"
+                       decoration-danger="kw_email_validation_state == 'invalid'"
+                       decoration-warning="kw_email_validation_state == 'pending'"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

@@ -102,3 +102,4 @@ probe/
 *.orig
 media/
 .windsurfrules
+_assets/
