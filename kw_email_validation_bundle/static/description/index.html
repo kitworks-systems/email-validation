@@ -74,7 +74,7 @@
                     </div>
                     <div class="tab-pane fade" id="sa-crm" role="tabpanel">
                         <img src="screenshot_crm.png" alt="Email validation badges in the CRM leads list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
-                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Leads list — bad-email leads are flagged before they reach a salesperson.</p>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Leads list &mdash; bad-email leads are flagged before they reach a salesperson.</p>
                     </div>
                     <div class="tab-pane fade" id="sa-recruitment" role="tabpanel">
                         <img src="screenshot_recruitment.png" alt="Email validation badges in the candidates list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
@@ -86,15 +86,15 @@
                     </div>
                     <div class="tab-pane fade" id="sa-events" role="tabpanel">
                         <img src="screenshot_events.png" alt="Email validation badges in the Event registrations list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
-                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Registrations list — attendees with bad addresses surface before invitations are sent.</p>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Registrations list &mdash; attendees with bad addresses surface before invitations are sent.</p>
                     </div>
                     <div class="tab-pane fade" id="sa-mass-mailing" role="tabpanel">
                         <img src="screenshot_mass_mailing.png" alt="Email validation badges in the Mailing List Contacts list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
-                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Mailing list contacts — clean lists cut bounces before send.</p>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Mailing list contacts &mdash; clean lists cut bounces before send.</p>
                     </div>
                     <div class="tab-pane fade" id="sa-validators" role="tabpanel">
                         <img src="screenshot_validators.png" alt="Email validators registry with 11 configured validators" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
-                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Configuration of validators — local checks and 8 API providers, all in one registry.</p>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Configuration of validators &mdash; local checks and 8 API providers, all in one registry.</p>
                     </div>
                 </div>
             </div>
@@ -119,10 +119,10 @@
                 <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">How validation works</h3>
                 <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Every email address passes through a configurable pipeline. Validators run in sequence; the first one to determine the address as invalid stops the chain. Successful checks accumulate evidence until a final state is reached.</p>
                 <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
-                    <li><strong style="color: #082567;">Stage 1 — Regexp.</strong> RFC-style syntax check. Local, instant, free. Eliminates obvious typos.</li>
-                    <li><strong style="color: #082567;">Stage 2 — DNS.</strong> MX record lookup via dnspython. Confirms the domain accepts mail.</li>
-                    <li><strong style="color: #082567;">Stage 3 — SMTP.</strong> Connection-level handshake without sending mail. Detects mailbox existence.</li>
-                    <li><strong style="color: #082567;">Stage 4 — API.</strong> Optional third-party verification with disposable detection, role-based detection, accept-all flagging and spam-trap analysis.</li>
+                    <li><strong style="color: #082567;">Stage 1 &mdash; Regexp.</strong> RFC-style syntax check. Local, instant, free. Eliminates obvious typos.</li>
+                    <li><strong style="color: #082567;">Stage 2 &mdash; DNS.</strong> MX record lookup via dnspython. Confirms the domain accepts mail.</li>
+                    <li><strong style="color: #082567;">Stage 3 &mdash; SMTP.</strong> Connection-level handshake without sending mail. Detects mailbox existence.</li>
+                    <li><strong style="color: #082567;">Stage 4 &mdash; API.</strong> Optional third-party verification with disposable detection, role-based detection, accept-all flagging and spam-trap analysis.</li>
                 </ul>
                 <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 24px 0 16px;">Result and reuse</h3>
                 <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Each validation run is stored and linked to the source record. Repeated checks of the same address reuse the cached result up to a configurable TTL, avoiding redundant API calls and saving cost.</p>
@@ -138,14 +138,14 @@
                 <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 24px 0 16px;">Third-party API providers</h3>
                 <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Eight commercial validators are supported out of the box. Configure with your API key and assign a sequence in the rule engine.</p>
                 <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
-                    <li><strong style="color: #082567;">NeverBounce</strong> — high accuracy, accept-all flagging, role-based detection.</li>
-                    <li><strong style="color: #082567;">ZeroBounce</strong> — disposable detection, spam-trap detection, AI scoring.</li>
-                    <li><strong style="color: #082567;">Clearout</strong> — bulk-friendly, real-time validation, deliverability scoring.</li>
-                    <li><strong style="color: #082567;">MailerCheck</strong> — bounce prediction, MX validation, syntax check in one call.</li>
-                    <li><strong style="color: #082567;">Mailgun</strong> — part of the Mailgun deliverability stack, suitable if you already send via Mailgun.</li>
-                    <li><strong style="color: #082567;">SendPulse</strong> — free tier available, integrated with the SendPulse marketing suite.</li>
-                    <li><strong style="color: #082567;">MillionVerifier</strong> — high-volume bulk verification, predictable pricing.</li>
-                    <li><strong style="color: #082567;">QuickEmailVerification</strong> — fast single-call API, accept-all and disposable detection.</li>
+                    <li><strong style="color: #082567;">NeverBounce</strong> &mdash; high accuracy, accept-all flagging, role-based detection.</li>
+                    <li><strong style="color: #082567;">ZeroBounce</strong> &mdash; disposable detection, spam-trap detection, AI scoring.</li>
+                    <li><strong style="color: #082567;">Clearout</strong> &mdash; bulk-friendly, real-time validation, deliverability scoring.</li>
+                    <li><strong style="color: #082567;">MailerCheck</strong> &mdash; bounce prediction, MX validation, syntax check in one call.</li>
+                    <li><strong style="color: #082567;">Mailgun</strong> &mdash; part of the Mailgun deliverability stack, suitable if you already send via Mailgun.</li>
+                    <li><strong style="color: #082567;">SendPulse</strong> &mdash; free tier available, integrated with the SendPulse marketing suite.</li>
+                    <li><strong style="color: #082567;">MillionVerifier</strong> &mdash; high-volume bulk verification, predictable pricing.</li>
+                    <li><strong style="color: #082567;">QuickEmailVerification</strong> &mdash; fast single-call API, accept-all and disposable detection.</li>
                 </ul>
             </div>
 
@@ -153,15 +153,15 @@
                 <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">Where validation appears</h3>
                 <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Each integration adds a status badge to the relevant list view and decoration to the form view. Records are auto-validated on create and update.</p>
                 <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
-                    <li><strong style="color: #082567;">Contacts</strong> (res.partner) — email field. Visible in customer and supplier lists.</li>
-                    <li><strong style="color: #082567;">CRM</strong> (crm.lead) — email_from field. Visible on the leads list and pipeline.</li>
-                    <li><strong style="color: #082567;">HR</strong> (hr.employee) — work_email field. Visible in the employee directory.</li>
-                    <li><strong style="color: #082567;">HR Recruitment</strong> (hr.applicant) — email_from field. Visible in the candidate pipeline.</li>
-                    <li><strong style="color: #082567;">Events</strong> (event.registration) — email field. Visible in the registrations list.</li>
-                    <li><strong style="color: #082567;">Mass Mailing</strong> (mailing.contact) — email field. Helps clean lists before send.</li>
-                    <li><strong style="color: #082567;">SMTP</strong> — built-in validator that performs server-level handshake.</li>
-                    <li><strong style="color: #082567;">DNS</strong> — built-in validator that resolves MX and A records.</li>
-                    <li><strong style="color: #082567;">Web</strong> — public endpoint for single-email and bulk validation requests.</li>
+                    <li><strong style="color: #082567;">Contacts</strong> (res.partner) &mdash; email field. Visible in customer and supplier lists.</li>
+                    <li><strong style="color: #082567;">CRM</strong> (crm.lead) &mdash; email_from field. Visible on the leads list and pipeline.</li>
+                    <li><strong style="color: #082567;">HR</strong> (hr.employee) &mdash; work_email field. Visible in the employee directory.</li>
+                    <li><strong style="color: #082567;">HR Recruitment</strong> (hr.applicant) &mdash; email_from field. Visible in the candidate pipeline.</li>
+                    <li><strong style="color: #082567;">Events</strong> (event.registration) &mdash; email field. Visible in the registrations list.</li>
+                    <li><strong style="color: #082567;">Mass Mailing</strong> (mailing.contact) &mdash; email field. Helps clean lists before send.</li>
+                    <li><strong style="color: #082567;">SMTP</strong> &mdash; built-in validator that performs server-level handshake.</li>
+                    <li><strong style="color: #082567;">DNS</strong> &mdash; built-in validator that resolves MX and A records.</li>
+                    <li><strong style="color: #082567;">Web</strong> &mdash; public endpoint for single-email and bulk validation requests.</li>
                 </ul>
             </div>
 
