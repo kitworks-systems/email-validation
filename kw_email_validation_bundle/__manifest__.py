@@ -35,7 +35,7 @@
     """,
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
     'category': 'Customizations',
     'license': 'LGPL-3',

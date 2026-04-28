@@ -8,9 +8,9 @@
     """,
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
-    'category': 'Customizations',
+    'category': 'Hidden/Tools',
     'license': 'LGPL-3',
     'version': '18.0.1.0.0',
 
