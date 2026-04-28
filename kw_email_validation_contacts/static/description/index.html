@@ -1,128 +1,121 @@
-<section style="max-width: 896px; margin: 0 auto;">
-    <div style="text-align: center;">
-        <h1 style="color:#875A7B;">Email Validation for Contacts</h1>
-    </div>
-    <div style="text-align: center;">
-        <p>
-            <a href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html">
-                <img alt="License: LGPL-3"
-                     src="https://img.shields.io/badge/license-LGPL--3-blue.png"/></a>
-            <a href="https://kitworks.systems/">
-                <img alt="Kitworks Systems"
-                     src="https://img.shields.io/badge/maintainer-Kitworks-purple.png"/></a>
-        </p>
-        <p><br></p>
-    </div>
-</section>
+<section class="oe_styling_v8" style="max-width: 896px; margin: 0 auto; padding: 0 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-<section style="margin: 0 auto; max-width: 896px;">
-    <div>
-        <p>This module extends the base email validation functionality to validate email addresses 
-           for contacts (res.partner) in Odoo. It ensures that your contact database contains 
-           valid email addresses, reducing bounce rates and improving communication quality.</p>
+    <!-- 1. WHAT IT DOES -->
+    <div style="padding: 48px 0 32px;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 12px;">What this module does</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 36px; max-width: 640px;">Validates the <code>email</code> field on <code>res.partner</code>. Protects master contact data &mdash; every customer and supplier email is checked on create and update.</p>
 
-        <p>Key features include:</p>
-        <ul>
-            <li>Automatic validation of contact email addresses</li>
-            <li>Visual indicators for email validation status directly on the email field</li>
-            <li>Manual validation through action menu</li>
-            <li>Automatic validation of existing emails upon module installation</li>
-        </ul>
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-check-circle"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Auto-validates on create and update</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Every contact record is checked automatically when the email is set or changed. No batch needed.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-tag"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Validation state badge in lists</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Color-coded badge added to the customer and supplier lists. Green for valid, red for invalid, amber for pending.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-refresh"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Bulk re-validate from Action menu</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Select any number of records, run Action &mdash; Validate Email. Useful after importing a list.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-puzzle-piece"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Plugs into any validator</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Uses the Email Validation Suite engine: Regexp, DNS, SMTP and 8 third-party API providers.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Usage</h3>
-        
-        <h4>Email Validation Status</h4>
-        <p>The email field in contact forms will be color-coded based on validation status:</p>
-        <ul>
-            <li><span style="color: green;">Green</span>: Valid email address</li>
-            <li><span style="color: orange;">Yellow</span>: Email pending validation</li>
-            <li><span style="color: red;">Red</span>: Invalid email address</li>
-        </ul>
-        
-        <h4>Manual Validation</h4>
-        <p>To manually validate email addresses:</p>
-        <ol>
-            <li>Open a contact form or select contacts from the list view</li>
-            <li>Click on the "Action" menu</li>
-            <li>Select "Validate Email Address"</li>
-        </ol>
-        
-        <h4>Batch Validation</h4>
-        <p>To validate multiple contacts at once:</p>
-        <ol>
-            <li>Select multiple contacts in the list view</li>
-            <li>Click on the "Action" menu</li>
-            <li>Select "Validate Email Address"</li>
-        </ol>
+    <!-- 2. SCREENSHOT -->
+    <div style="padding: 16px 0 48px;">
+        <img src="screenshot.png" alt="Email validation badges in the Contacts list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+        <p style="text-align: center; color: #6b7791; font-size: 13px; margin: 8px 0 0;">Contacts list with the Validation state column showing Valid and Invalid badges.</p>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Technical Details</h3>
-        <ul>
-            <li><b>Validated Field:</b> The standard <code>email</code> field in res.partner model</li>
-            <li><b>Implementation:</b> Uses the kw.email.validation.mixin to inherit validation functionality</li>
-            <li><b>Automatic Processing:</b> 
-                <ul>
-                    <li>New contacts are automatically queued for validation</li>
-                    <li>Existing contacts are validated upon module installation</li>
-                </ul>
-            </li>
-            <li><b>UI Integration:</b> 
-                <ul>
-                    <li>Color indicators directly on the email field</li>
-                    <li>Action menu integration for manual validation</li>
-                </ul>
-            </li>
-        </ul>
+    <!-- 3. PART OF THE EMAIL VALIDATION SUITE -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 16px;">Part of the Email Validation Suite</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 24px; max-width: 640px;">This module is one of 11 modules that add email address validation to every relevant Odoo model. Install the bundle to get the full set.</p>
+
+        <div style="text-align: center; margin-bottom: 32px;">
+            <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_bundle" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 15px;"><i class="fa fa-cube" style="margin-right: 8px;"></i>Advanced Email Validator all-in-one</a>
+        </div>
+
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Base framework</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_crm" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">CRM</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_crm</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_hr" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">HR</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_hr</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_hr_recruitment" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Recruitment</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_hr_recruitment</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_event" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Events</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_event</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_mass_mailing" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Mass Mailing</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_mass_mailing</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_smtp" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">SMTP validator</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_smtp</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_dnspython" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">DNS validator</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_dnspython</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/18.0/kw_email_validation_web" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Web interface</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_web</div>
+                </a>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Dependencies</h3>
-        <ul>
-            <li><b>kw_email_validation</b>: Base module providing core validation functionality</li>
-            <li><b>contacts</b>: Odoo Contacts module</li>
-        </ul>
-        
-        <h3>Configuration</h3>
-        <p>
-            No additional configuration is required for this module.
-        </p>
+    <!-- 4. NEED HELP? -->
+    <div style="padding: 48px 16px 64px; border-top: 1px solid #e5e9f2; text-align: center;">
+        <div style="color: #082567; font-size: 32px; margin-bottom: 12px;"><i class="fa fa-envelope"></i></div>
+        <h2 style="color: #082567; font-size: 24px; font-weight: 700; margin: 0 0 12px;">Questions or feedback?</h2>
+        <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; max-width: 520px; margin: 0 auto 20px;">Kitworks Systems supports the Email Validation Suite. Reach out for installation help, bug reports or custom validator integrations.</p>
+        <a href="mailto:info@kitworks.systems" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;"><i class="fa fa-envelope" style="margin-right: 8px;"></i>info@kitworks.systems</a>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Bug Tracker</h3>
-        <p>
-            Bugs are tracked on <a href="https://kitworks.systems/requests">https://kitworks.systems/requests</a>.
-            In case of trouble, please check there if your issue has already
-            been reported.
-        </p>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto; text-align: center;">
-    <div>
-        <h2 style="color: #138c33">Maintainer</h2>
-        <p>KitWorks Systems. Our web site: <a href="https://kitworks.systems">https://kitworks.systems</a></p>
-
-        <p>
-            We can provide you further Odoo Support, Odoo implementation,
-            Odoo customization, Odoo 3rd Party development and integration
-            software, consulting services. Our main goal is to provide the best
-            quality product for you.
-        </p>
-        <p>
-            For any questions
-            <a href="mailto:info@kitworks.systems">contact us</a>.
-        </p>
-    </div>
 </section>
