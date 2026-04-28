@@ -1,14 +1,24 @@
 {
     'name': 'Email Validation - HR',
-    'summary': """
-        This module integrates email validation with the HR module,
-        allowing validation of employee email addresses.
-    """,
+    'summary': '''
+        Employee Email Validation | Employee Email Verification |
+        HR Email Validator | HR Email Verifier | HR Email Checker |
+        work_email Validation | work_email Verification |
+        hr.employee Email Validation | hr.employee Email Check |
+        Staff Email Validation | Workforce Email Quality |
+        Employee Directory Quality | HR Master Data Quality |
+        Internal Communication Quality | Onboarding Email Check |
+        Email Validator | Email Verifier | Email Checker |
+        Validates the work_email field on hr.employee records and displays
+        a status badge in employee list, kanban and form views. Keeps the
+        employee directory clean, ensures payroll, internal newsletters and
+        HR notifications reach the right inbox.
+    ''',
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
-    'category': 'Customizations',
+    'category': 'Hidden/Tools',
     'license': 'LGPL-3',
     'version': '17.0.1.0.0',
 

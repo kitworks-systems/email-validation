@@ -1,6 +1,6 @@
 {
     'name': 'Advanced Email Validator all-in-one',
-    'summary': """
+    'summary': '''
         Email Verification | Verification Email | Email Validator |
         Validator Email | Email Validation | Validation Email |
         Email Checker | Checker Email | Email Verifier | Verifier Email |
@@ -27,15 +27,11 @@
         Email Verification NeverBounce | Email Validation ZeroBounce |
         Email Checker SendPulse | Email Validator Mailgun |
         Email Verifier MailerCheck | Email Check QuickEmailVerification |
-        Email Validate MillionVerifier | Email Verify Clearout |
-        Comprehensive solution including syntax checking, domain verification,
-        SMTP validation, DNS validation, regex validation. Integration with
-        external services: NeverBounce, QuickEmailVerification, MillionVerifier,
-        Clearout, MailerCheck, Mailgun, SendPulse, ZeroBounce.
-    """,
+        Email Validate MillionVerifier | Email Verify Clearout
+    ''',
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
     'category': 'Customizations',
     'license': 'LGPL-3',

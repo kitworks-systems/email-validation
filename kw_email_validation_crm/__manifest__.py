@@ -1,14 +1,25 @@
 {
     'name': 'Email Validation - CRM',
-    'summary': """
-        This module integrates email validation with the CRM module,
-        allowing validation of lead and opportunity email addresses.
-    """,
+    'summary': '''
+        Lead Email Validation | Lead Email Verification |
+        Opportunity Email Validation | Opportunity Email Check |
+        CRM Email Validator | CRM Email Verifier | CRM Email Checker |
+        crm.lead Email Validation | crm.lead Email Verification |
+        Sales Lead Email Check | Sales Pipeline Quality |
+        Lead Quality | Lead Qualification | Lead Scoring |
+        Bad Lead Detection | Junk Lead Filter | Fake Lead Detection |
+        Spam Lead Filter | Lead Data Cleansing | Lead Deduplication Helper |
+        Email Validator | Email Verifier | Email Checker |
+        Validates the email_from field on crm.lead records and shows a
+        status badge in lead and opportunity list, kanban and form views.
+        Helps sales teams qualify pipeline faster, prevent wasted outreach
+        on invalid addresses and improve overall CRM data quality.
+    ''',
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
-    'category': 'Customizations',
+    'category': 'Hidden/Tools',
     'license': 'LGPL-3',
     'version': '17.0.1.0.0',
 

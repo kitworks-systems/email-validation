@@ -1,15 +1,24 @@
 {
     'name': 'Email Validation - Web Interface',
-    'summary': """
-        Web interface for bulk email validation
-        Provides a convenient interface for checking multiple email
-        addresses at once.
-    """,
+    'summary': '''
+        Bulk Email Validation Web | Web Email Validator |
+        Bulk Email Verification Form | Web Bulk Email Check |
+        Public Email Validator Form | Online Email Validation |
+        CSV Email Validation | List Email Verification |
+        Multiple Email Validation | Mass Email Address Check |
+        Web-based Email Verifier | Browser Email Validator |
+        Public Bulk Validation Endpoint | One-click Email Validation |
+        Email Validator | Email Verifier | Email Checker |
+        Public web interface and HTTP endpoint for single-address and
+        bulk email validation. Submit a list of addresses, get a validation
+        result per record using any validator configured in the suite.
+        Includes a manual entry form and a CSV-style bulk-paste field.
+    ''',
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
-    'category': 'Customizations',
+    'category': 'Hidden/Tools',
     'license': 'LGPL-3',
     'version': '17.0.1.0.0',
 

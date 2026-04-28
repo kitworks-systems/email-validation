@@ -1,14 +1,24 @@
 {
     'name': 'Email Validation - SMTP',
-    'summary': """
-        Module for email validation using SMTP connection
-        Checks mailbox existence by establishing SMTP connection.
-    """,
+    'summary': '''
+        SMTP Email Validator | SMTP Email Verification |
+        SMTP Email Check | SMTP Based Email Validation |
+        Mailbox Existence Check | Mailbox Verification |
+        SMTP Handshake Validation | SMTP RCPT Check |
+        Server-level Email Verification | Server-side Email Check |
+        Recipient Server Probe | Recipient Mailbox Probe |
+        Real-time Email Validation | Live Mailbox Check |
+        Email Validator | Email Verifier | Email Checker |
+        SMTP-based email validator that opens a connection to the recipient
+        mail server and queries mailbox existence without sending mail.
+        Plugs into the Email Validation Suite as an additional rule for the
+        validation pipeline. No API key required.
+    ''',
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
-    'category': 'Customizations',
+    'category': 'Hidden/Tools',
     'license': 'LGPL-3',
     'version': '17.0.1.0.0',
 
