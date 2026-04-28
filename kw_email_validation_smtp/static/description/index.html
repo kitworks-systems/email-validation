@@ -1,129 +1,121 @@
-<section style="max-width: 896px; margin: 0 auto;">
-    <div style="text-align: center;">
-        <h1 style="color:#875A7B;">Email Validation with SMTP Verification</h1>
-    </div>
-    <div style="text-align: center;">
-        <p>
-            <a href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html">
-                <img alt="License: LGPL-3"
-                     src="https://img.shields.io/badge/license-LGPL--3-blue.png"/></a>
-            <a href="https://kitworks.systems/">
-                <img alt="Kitworks Systems"
-                     src="https://img.shields.io/badge/maintainer-Kitworks-purple.png"/></a>
-        </p>
-        <p><br></p>
-    </div>
-</section>
+<section class="oe_styling_v8" style="max-width: 896px; margin: 0 auto; padding: 0 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-<section style="margin: 0 auto; max-width: 896px;">
-    <div>
-        <p>This module extends the base email validation functionality with SMTP-based verification. 
-           It adds an advanced layer of validation by performing a partial SMTP connection to verify 
-           the existence of email addresses, significantly improving validation accuracy without 
-           requiring paid external API services.</p>
+    <!-- 1. WHAT IT DOES -->
+    <div style="padding: 48px 0 32px;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 12px;">What this module does</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 36px; max-width: 640px;">SMTP-based email validator. Opens a connection to the recipient mail server and queries mailbox existence without sending mail. No API key required.</p>
 
-        <p>Key features include:</p>
-        <ul>
-            <li>SMTP-based mailbox verification</li>
-            <li>Integration with the base email validation system</li>
-            <li>No external API dependencies or costs</li>
-            <li>High accuracy compared to DNS-only or syntax-only checks</li>
-            <li>Non-intrusive verification without sending actual emails</li>
-        </ul>
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-exchange"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">SMTP handshake check</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Performs server-level handshake (HELO, MAIL FROM, RCPT TO) without actually delivering a message.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-server"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Mailbox existence detection</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Confirms whether the requested address actually exists on the recipient server.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-key"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">No API key</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Free local check, no third-party service dependency, no per-request cost.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-puzzle-piece"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Plugs into the rule engine</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Place SMTP early or late in the validation chain via the suite rule engine.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Technical Details</h3>
-        <ul>
-            <li><b>Implementation:</b> Adds a new validator to the kw.email.validator model</li>
-            <li><b>Validation Method:</b> 
-                <ul>
-                    <li>Establishes an SMTP connection to the recipient's mail server</li>
-                    <li>Performs SMTP handshake and RCPT TO command</li>
-                    <li>Verifies server response to determine if the mailbox exists</li>
-                    <li>Gracefully closes the connection without sending actual email</li>
-                </ul>
-            </li>
-            <li><b>Performance:</b> 
-                <ul>
-                    <li>More thorough than DNS checks but requires more time</li>
-                    <li>Configurable timeout settings to prevent long-running validations</li>
-                </ul>
-            </li>
-        </ul>
+    <!-- 2. SCREENSHOT -->
+    <div style="padding: 16px 0 48px;">
+        <img src="screenshot.png" alt="SMTP validator configuration form" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+        <p style="text-align: center; color: #6b7791; font-size: 13px; margin: 8px 0 0;">SMTP validator configuration form &mdash; minimal setup, no API key.</p>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Benefits</h3>
-        <ul>
-            <li><b>Cost-Effective:</b> No external API costs or rate limits</li>
-            <li><b>Privacy:</b> Email addresses are not shared with third-party services</li>
-            <li><b>Accuracy:</b> Higher accuracy than DNS-only or syntax-only validation</li>
-            <li><b>Mailbox Verification:</b> Can detect non-existent mailboxes in valid domains</li>
-            <li><b>Self-Hosted:</b> Complete control over the validation process</li>
-        </ul>
+    <!-- 3. PART OF THE EMAIL VALIDATION SUITE -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 16px;">Part of the Email Validation Suite</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 24px; max-width: 640px;">This module is one of 11 modules that add email address validation to every relevant Odoo model. Install the bundle to get the full set.</p>
+
+        <div style="text-align: center; margin-bottom: 32px;">
+            <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_bundle" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 15px;"><i class="fa fa-cube" style="margin-right: 8px;"></i>Advanced Email Validator all-in-one</a>
+        </div>
+
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Base framework</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_contacts" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Contacts</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_contacts</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_crm" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">CRM</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_crm</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_hr" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">HR</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_hr</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_hr_recruitment" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Recruitment</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_hr_recruitment</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_event" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Events</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_event</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_mass_mailing" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Mass Mailing</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_mass_mailing</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_dnspython" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">DNS validator</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_dnspython</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_web" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Web interface</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_web</div>
+                </a>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Limitations</h3>
-        <p>
-            While SMTP validation provides high accuracy, it has some limitations:
-        </p>
-        <ul>
-            <li>Some mail servers may block SMTP verification attempts</li>
-            <li>Cannot reliably detect catch-all email configurations</li>
-            <li>Cannot detect disposable email addresses</li>
-            <li>May be slower than API-based validation services</li>
-            <li>For these advanced validations, consider using API-based validators</li>
-        </ul>
+    <!-- 4. NEED HELP? -->
+    <div style="padding: 48px 16px 64px; border-top: 1px solid #e5e9f2; text-align: center;">
+        <div style="color: #082567; font-size: 32px; margin-bottom: 12px;"><i class="fa fa-envelope"></i></div>
+        <h2 style="color: #082567; font-size: 24px; font-weight: 700; margin: 0 0 12px;">Questions or feedback?</h2>
+        <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; max-width: 520px; margin: 0 auto 20px;">Kitworks Systems supports the Email Validation Suite. Reach out for installation help, bug reports or custom validator integrations.</p>
+        <a href="mailto:info@kitworks.systems" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;"><i class="fa fa-envelope" style="margin-right: 8px;"></i>info@kitworks.systems</a>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Dependencies</h3>
-        <ul>
-            <li><b>kw_email_validation</b>: Base module providing core validation functionality</li>
-        </ul>
-        
-        <h3>Configuration</h3>
-        <p>
-            No additional configuration is required for this module.
-        </p>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Bug Tracker</h3>
-        <p>
-            Bugs are tracked on <a href="https://kitworks.systems/requests">https://kitworks.systems/requests</a>.
-            In case of trouble, please check there if your issue has already
-            been reported.
-        </p>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto; text-align: center;">
-    <div>
-        <h2 style="color: #138c33">Maintainer</h2>
-        <p>KitWorks Systems. Our web site: <a href="https://kitworks.systems">https://kitworks.systems</a></p>
-
-        <p>
-            We can provide you further Odoo Support, Odoo implementation,
-            Odoo customization, Odoo 3rd Party development and integration
-            software, consulting services. Our main goal is to provide the best
-            quality product for you.
-        </p>
-        <p>
-            For any questions
-            <a href="mailto:info@kitworks.systems">contact us</a>.
-        </p>
-    </div>
 </section>

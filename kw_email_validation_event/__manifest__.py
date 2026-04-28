@@ -1,14 +1,24 @@
 {
     'name': 'Email Validation - Events',
-    'summary': """
-        This module integrates email validation with the Events module,
-        allowing validation of event registration email addresses.
-    """,
+    'summary': '''
+        Attendee Email Validation | Attendee Email Verification |
+        Event Email Validator | Event Email Verifier | Event Email Checker |
+        Registration Email Validation | Registration Email Verification |
+        event.registration Email Check | Event Attendee Email Validator |
+        Event Attendee Quality | Event Registration Quality |
+        Conference Registration Validation | Webinar Email Verification |
+        Event Invitation Deliverability | Event Bounce Prevention |
+        Email Validator | Email Verifier | Email Checker |
+        Validates the email field on event.registration records and shows a
+        status badge in attendee list and kanban views. Ensures event
+        invitations, reminders and post-event communications reach real
+        attendees and reduces bounce rates on event campaigns.
+    ''',
 
     'author': 'Kitworks Systems',
-    'website': 'https://github.com/kitworks-systems/email-validation',
+    'website': 'https://kitworks.systems/',
 
-    'category': 'Customizations',
+    'category': 'Hidden/Tools',
     'license': 'LGPL-3',
     'version': '16.0.1.0.0',
 

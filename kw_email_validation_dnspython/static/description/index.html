@@ -1,127 +1,121 @@
-<section style="max-width: 896px; margin: 0 auto;">
-    <div style="text-align: center;">
-        <h1 style="color:#875A7B;">Email Validation with DNS Verification</h1>
-    </div>
-    <div style="text-align: center;">
-        <p>
-            <a href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html">
-                <img alt="License: LGPL-3"
-                     src="https://img.shields.io/badge/license-LGPL--3-blue.png"/></a>
-            <a href="https://kitworks.systems/">
-                <img alt="Kitworks Systems"
-                     src="https://img.shields.io/badge/maintainer-Kitworks-purple.png"/></a>
-        </p>
-        <p><br></p>
-    </div>
-</section>
+<section class="oe_styling_v8" style="max-width: 896px; margin: 0 auto; padding: 0 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-<section style="margin: 0 auto; max-width: 896px;">
-    <div>
-        <p>This module extends the base email validation functionality with DNS-based verification 
-           using the dnspython library. It adds an additional layer of validation by checking 
-           the existence of MX records for email domains, significantly improving the accuracy 
-           of email validation without requiring external API services.</p>
+    <!-- 1. WHAT IT DOES -->
+    <div style="padding: 48px 0 32px;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 12px;">What this module does</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 36px; max-width: 640px;">DNS-based email validator. Resolves MX and A records for the address domain via the dnspython library to confirm the recipient domain accepts mail.</p>
 
-        <p>Key features include:</p>
-        <ul>
-            <li>DNS-based domain verification using MX record lookups</li>
-            <li>Integration with the base email validation system</li>
-            <li>No external API dependencies or costs</li>
-            <li>Improved validation accuracy compared to syntax-only checks</li>
-        </ul>
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-globe"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">MX record lookup</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Confirms the domain has at least one configured Mail Exchanger.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-server"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">A record fallback</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Falls back to A record check when no MX is published, matching real-world mail server behaviour.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-key"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">No API key</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Free local check using the dnspython library, no third-party service dependency.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 20px; height: 100%;">
+                    <div style="color: #082567; font-size: 22px; margin-bottom: 8px;"><i class="fa fa-puzzle-piece"></i></div>
+                    <h3 style="color: #082567; font-size: 16px; font-weight: 700; margin: 0 0 6px;">Plugs into the rule engine</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Place DNS early in the chain to filter out fake domains before paid APIs run.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Technical Details</h3>
-        <ul>
-            <li><b>Implementation:</b> Adds a new validator to the kw.email.validator model</li>
-            <li><b>Validation Method:</b> 
-                <ul>
-                    <li>Checks for the existence of MX records for the email domain</li>
-                    <li>Falls back to A record check if MX records are not found</li>
-                    <li>Validates that the domain can receive email</li>
-                </ul>
-            </li>
-            <li><b>Performance:</b> 
-                <ul>
-                    <li>Fast validation without external API calls</li>
-                    <li>Minimal network overhead compared to full SMTP checks</li>
-                </ul>
-            </li>
-        </ul>
+    <!-- 2. SCREENSHOT -->
+    <div style="padding: 16px 0 48px;">
+        <img src="screenshot.png" alt="DNS validator configuration form" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+        <p style="text-align: center; color: #6b7791; font-size: 13px; margin: 8px 0 0;">DNS validator configuration form &mdash; minimal setup, uses dnspython.</p>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Benefits</h3>
-        <ul>
-            <li><b>Cost-Effective:</b> No external API costs or rate limits</li>
-            <li><b>Privacy:</b> Email addresses are not shared with third-party services</li>
-            <li><b>Reliability:</b> No dependency on external service availability</li>
-            <li><b>Speed:</b> Fast DNS lookups compared to full SMTP validation</li>
-            <li><b>Accuracy:</b> More accurate than syntax-only validation</li>
-        </ul>
+    <!-- 3. PART OF THE EMAIL VALIDATION SUITE -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 16px;">Part of the Email Validation Suite</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 24px; max-width: 640px;">This module is one of 11 modules that add email address validation to every relevant Odoo model. Install the bundle to get the full set.</p>
+
+        <div style="text-align: center; margin-bottom: 32px;">
+            <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_bundle" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 15px;"><i class="fa fa-cube" style="margin-right: 8px;"></i>Advanced Email Validator all-in-one</a>
+        </div>
+
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Base framework</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_contacts" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Contacts</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_contacts</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_crm" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">CRM</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_crm</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_hr" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">HR</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_hr</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_hr_recruitment" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Recruitment</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_hr_recruitment</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_event" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Events</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_event</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_mass_mailing" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Mass Mailing</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_mass_mailing</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_smtp" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">SMTP validator</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_smtp</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 6px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_web" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 6px; padding: 12px 16px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 14px;">Web interface</div>
+                    <div style="color: #6b7791; font-size: 12px; font-family: monospace;">kw_email_validation_web</div>
+                </a>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Limitations</h3>
-        <p>
-            While DNS validation significantly improves validation accuracy, it has some limitations:
-        </p>
-        <ul>
-            <li>Cannot verify if the specific mailbox exists (only validates the domain)</li>
-            <li>Cannot detect disposable email addresses</li>
-            <li>Cannot detect catch-all email configurations</li>
-            <li>For these advanced validations, consider using API-based validators</li>
-        </ul>
+    <!-- 4. NEED HELP? -->
+    <div style="padding: 48px 16px 64px; border-top: 1px solid #e5e9f2; text-align: center;">
+        <div style="color: #082567; font-size: 32px; margin-bottom: 12px;"><i class="fa fa-envelope"></i></div>
+        <h2 style="color: #082567; font-size: 24px; font-weight: 700; margin: 0 0 12px;">Questions or feedback?</h2>
+        <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; max-width: 520px; margin: 0 auto 20px;">Kitworks Systems supports the Email Validation Suite. Reach out for installation help, bug reports or custom validator integrations.</p>
+        <a href="mailto:info@kitworks.systems" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 15px;"><i class="fa fa-envelope" style="margin-right: 8px;"></i>info@kitworks.systems</a>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Dependencies</h3>
-        <ul>
-            <li><b>kw_email_validation</b>: Base module providing core validation functionality</li>
-            <li><b>dnspython</b>: Python library for DNS queries</li>
-        </ul>
-        
-        <h3>Configuration</h3>
-        <p>
-            No additional configuration is required for this module.
-        </p>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Bug Tracker</h3>
-        <p>
-            Bugs are tracked on <a href="https://kitworks.systems/requests">https://kitworks.systems/requests</a>.
-            In case of trouble, please check there if your issue has already
-            been reported.
-        </p>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto; text-align: center;">
-    <div>
-        <h2 style="color: #138c33">Maintainer</h2>
-        <p>KitWorks Systems. Our web site: <a href="https://kitworks.systems">https://kitworks.systems</a></p>
-
-        <p>
-            We can provide you further Odoo Support, Odoo implementation,
-            Odoo customization, Odoo 3rd Party development and integration
-            software, consulting services. Our main goal is to provide the best
-            quality product for you.
-        </p>
-        <p>
-            For any questions
-            <a href="mailto:info@kitworks.systems">contact us</a>.
-        </p>
-    </div>
 </section>

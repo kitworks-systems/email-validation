@@ -1,379 +1,311 @@
-<section style="max-width: 896px; margin: 0 auto;">
-    <div style="text-align: center;">
-        <h1 style="color:#875A7B;">Email Validation Bundle</h1>
-    </div>
-    <div style="text-align: center;">
-        <p>
-            <a href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html">
-                <img alt="License: LGPL-3"
-                     src="https://img.shields.io/badge/license-LGPL--3-blue.png"/></a>
-            <a href="https://kitworks.systems/">
-                <img alt="Kitworks Systems"
-                     src="https://img.shields.io/badge/maintainer-Kitworks-purple.png"/></a>
-        </p>
-        <p><br></p>
-    </div>
-</section>
+<section class="oe_styling_v8" style="max-width: 896px; margin: 0 auto; padding: 0 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-<section style="margin: 0 auto; max-width: 896px;">
-    <div>
-        <p>This module provides a complete bundle of all email validation modules for Odoo. 
-           It's designed as a comprehensive solution for validating email addresses across your entire 
-           Odoo system, helping you maintain high-quality contact data, improve deliverability rates, 
-           and reduce bounces in your email communications.</p>
-
-        <p>The Email Validation Suite offers:</p>
-        <ul>
-            <li><b>Multi-level Validation:</b> From basic syntax checking to advanced API-based verification</li>
-            <li><b>Complete Coverage:</b> Validation for contacts, CRM leads, employees, job applicants, event registrations, and mass mailing lists</li>
-            <li><b>Multiple Validation Methods:</b> Regular expression, DNS, SMTP, and various third-party API services</li>
-            <li><b>Visual Indicators:</b> Color-coded status indicators for email fields across all supported modules</li>
-            <li><b>Automatic Processing:</b> Background validation of new and existing email addresses</li>
-            <li><b>Manual Controls:</b> On-demand validation through action menus and a dedicated web interface</li>
-            <li><b>Flexible Configuration:</b> Customizable validation rules and priorities</li>
-        </ul>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Included Modules</h3>
-        
-        <h4>Core Functionality</h4>
-        <ul>
-            <li><b>kw_email_validation</b>: Base module providing the core validation framework, validation status tracking, and API integrations. Includes:
-                <ul>
-                    <li>Email syntax validation using regular expressions</li>
-                    <li>Validation status tracking (valid, invalid, pending)</li>
-                    <li>Integration with multiple third-party validation services</li>
-                    <li>Configurable validation rules and priorities</li>
-                    <li>Scheduled background validation</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_web</b>: Provides a dedicated web interface for email validation, allowing:
-                <ul>
-                    <li>Individual email address validation</li>
-                    <li>Bulk validation through file upload</li>
-                    <li>Detailed validation results and statistics</li>
-                    <li>Export validation results to CSV</li>
-                </ul>
-            </li>
-        </ul>
-        
-        <h4>Validation Methods</h4>
-        <ul>
-            <li><b>kw_email_validation_dnspython</b>: Adds DNS-based validation capabilities:
-                <ul>
-                    <li>MX record verification</li>
-                    <li>A/AAAA record fallback checks</li>
-                    <li>SPF record analysis</li>
-                    <li>No external API dependencies</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_smtp</b>: Adds SMTP-based validation capabilities:
-                <ul>
-                    <li>Mailbox existence verification</li>
-                    <li>SMTP handshake and RCPT TO command</li>
-                    <li>No external API dependencies or costs</li>
-                    <li>Higher accuracy than DNS-only checks</li>
-                </ul>
-            </li>
-        </ul>
-        
-        <h4>Module Integrations</h4>
-        <ul>
-            <li><b>kw_email_validation_contacts</b>: Integrates validation with Odoo Contacts:
-                <ul>
-                    <li>Validates email field in res.partner model</li>
-                    <li>Color indicators directly on email fields</li>
-                    <li>Manual validation through partner form actions</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_crm</b>: Integrates validation with Odoo CRM:
-                <ul>
-                    <li>Validates email_from field in crm.lead model</li>
-                    <li>Color indicators in lead and opportunity forms</li>
-                    <li>Validation status filtering in list views</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_hr</b>: Integrates validation with Odoo HR:
-                <ul>
-                    <li>Validates work_email field in hr.employee model</li>
-                    <li>Color indicators in employee forms</li>
-                    <li>Improves internal communication reliability</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_hr_recruitment</b>: Integrates validation with Odoo Recruitment:
-                <ul>
-                    <li>Validates email_from field in hr.applicant model</li>
-                    <li>Color indicators in applicant forms</li>
-                    <li>Ensures reliable communication with candidates</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_event</b>: Integrates validation with Odoo Events:
-                <ul>
-                    <li>Validates email field in event.registration model</li>
-                    <li>Color indicators in registration forms</li>
-                    <li>Ensures attendees receive event communications</li>
-                </ul>
-            </li>
-            <li><b>kw_email_validation_mass_mailing</b>: Integrates validation with Odoo Mass Mailing:
-                <ul>
-                    <li>Validates email field in mailing.contact model</li>
-                    <li>Color indicators in mailing contact forms</li>
-                    <li>Improves deliverability and sender reputation</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Technical Details</h3>
-        <p>
-            This is a meta-module that depends on all other email validation modules. 
-            It doesn't add any functionality itself but ensures that all email validation 
-            modules are installed and properly configured.
-        </p>
-        
-        <h4>Implementation</h4>
-        <ul>
-            <li>Automatic validation of email addresses across all supported models</li>
-            <li>Visual indicators for validation status in all relevant forms and lists</li>
-            <li>Manual validation through action menus where applicable</li>
-            <li>Automatic validation of existing emails upon module installation</li>
-        </ul>
-    </div>
-</section>
-
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Validation Services</h3>
-        <p>
-            The Email Validation Suite supports multiple validation methods and services:
-        </p>
-        
-        <h4>Built-in Validators (No API Key Required)</h4>
-        <ul>
-            <li><b>Regular Expression:</b> Basic syntax validation using pattern matching</li>
-            <li><b>DNS:</b> Verification of domain MX records (requires kw_email_validation_dnspython)</li>
-            <li><b>SMTP:</b> Mailbox existence verification (requires kw_email_validation_smtp)</li>
-        </ul>
-        
-        <h4>Third-Party API Services (API Key Required)</h4>
-        <ul>
-            <li><b>NeverBounce:</b> <a href="https://neverbounce.com/" target="_blank">https://neverbounce.com/</a> - Comprehensive email verification service</li>
-            <li><b>QuickEmailVerification:</b> <a href="https://quickemailverification.com/" target="_blank">https://quickemailverification.com/</a> - Fast and accurate email validation</li>
-            <li><b>MillionVerifier:</b> <a href="https://millionverifier.com/" target="_blank">https://millionverifier.com/</a> - Bulk email verification service</li>
-            <li><b>Clearout:</b> <a href="https://clearout.io/" target="_blank">https://clearout.io/</a> - Email verification and list cleaning</li>
-            <li><b>MailerCheck:</b> <a href="https://mailercheck.com/" target="_blank">https://mailercheck.com/</a> - Email verification service</li>
-            <li><b>Mailgun:</b> <a href="https://www.mailgun.com/" target="_blank">https://www.mailgun.com/</a> - Email validation API</li>
-            <li><b>SendPulse:</b> <a href="https://sendpulse.com/" target="_blank">https://sendpulse.com/</a> - Email verification service</li>
-            <li><b>ZeroBounce:</b> <a href="https://www.zerobounce.net/" target="_blank">https://www.zerobounce.net/</a> - Email validation and scoring</li>
-        </ul>
-        
-        <h4>Service Comparison</h4>
-        <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                <thead>
-                    <tr style="background-color: #875A7B; color: white;">
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Service</th>
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Accuracy</th>
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Speed</th>
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Price (per 1000)</th>
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Bulk Verification</th>
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">AI-scoring</th>
-                        <th style="padding: 8px; text-align: left; border: 1px solid #ddd;">Spam Trap Detection</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="background-color: #f9f9f9;">
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">NeverBounce</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$3.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Partial</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">QuickEmailVerification</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$2.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Partial</td>
-                    </tr>
-                    <tr style="background-color: #f9f9f9;">
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">MillionVerifier</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Medium</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$1.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">SendPulse</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Medium</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Medium</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$2.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                    </tr>
-                    <tr style="background-color: #f9f9f9;">
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">ZeroBounce</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$2.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Clearout</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$3.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                    </tr>
-                    <tr style="background-color: #f9f9f9;">
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">MailerCheck</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$2.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Mailgun</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">High</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">$1.00</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">No</td>
-                        <td style="padding: 8px; text-align: left; border: 1px solid #ddd;">Yes</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- 1. WHY THIS SUITE -->
+    <div style="padding: 48px 0 32px;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 36px;">Why this suite</h2>
+        <div class="row" style="margin: 0;">
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%;">
+                    <div style="color: #082567; font-size: 28px; margin-bottom: 12px;"><i class="fa fa-bullseye"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Four-stage pipeline</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Regexp, DNS, SMTP and API. Configurable order with early-exit on first failure.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%;">
+                    <div style="color: #082567; font-size: 28px; margin-bottom: 12px;"><i class="fa fa-plug"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">8 API providers</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">NeverBounce, ZeroBounce, Clearout, MailerCheck, Mailgun, SendPulse, MillionVerifier, QuickEmailVerification.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%;">
+                    <div style="color: #082567; font-size: 28px; margin-bottom: 12px;"><i class="fa fa-id-card-o"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">9 integrations</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Contacts, CRM, HR, HR Recruitment, Events, Mass Mailing, plus SMTP, DNS and Web.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%;">
+                    <div style="color: #082567; font-size: 28px; margin-bottom: 12px;"><i class="fa fa-cog"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Rule-based priority</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Each validator has a sequence. Cheap local checks first, paid APIs last. Per-domain override supported.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%;">
+                    <div style="color: #082567; font-size: 28px; margin-bottom: 12px;"><i class="fa fa-eye"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Visual status indicators</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Color-coded badges in every list, form and kanban view. Valid (green), Invalid (red), Pending (amber).</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%;">
+                    <div style="color: #082567; font-size: 28px; margin-bottom: 12px;"><i class="fa fa-bolt"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Zero extra dependencies</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Base depends only on web. Works on Community, Enterprise and Odoo.sh.</p>
+                </div>
+            </div>
         </div>
-        
-        <h4>Service Selection Recommendations</h4>
-        <ol>
-            <li><b>For small verification volumes</b>: ZeroBounce or Clearout - high accuracy but higher price.</li>
-            <li><b>For large verification volumes</b>: Mailgun or MillionVerifier - lower price, acceptable accuracy.</li>
-            <li><b>For integration with other services</b>:
-                <ul>
-                    <li>SendPulse - if you already use other SendPulse services.</li>
-                    <li>Mailgun - if you already use Mailgun services for email sending.</li>
+    </div>
+
+    <!-- 2. SEE IT IN ACTION (vertical tabs notebook) -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 16px;">See it in action</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 36px; max-width: 640px;">Validation status appears next to every email address across Contacts, CRM, HR, Recruitment, Events and Mass Mailing.</p>
+
+        <div class="row" style="margin: 0;">
+            <div class="col-md-3" style="padding: 0 12px 0 0;">
+                <ul class="nav nav-pills flex-column" role="tablist" style="--bs-nav-link-color: #082567; --bs-nav-pills-link-active-color: #ffffff; --bs-nav-pills-link-active-bg: #082567; gap: 4px;">
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#sa-contacts" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-address-book-o" style="margin-right: 8px;"></i>Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#sa-crm" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-bullhorn" style="margin-right: 8px;"></i>CRM</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#sa-recruitment" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-user-plus" style="margin-right: 8px;"></i>Recruitment</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#sa-hr" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-users" style="margin-right: 8px;"></i>HR</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#sa-events" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-calendar" style="margin-right: 8px;"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#sa-mass-mailing" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-envelope-o" style="margin-right: 8px;"></i>Mass Mailing</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#sa-validators" role="tab" style="font-weight: 600; text-align: left;"><i class="fa fa-cogs" style="margin-right: 8px;"></i>Validators</a></li>
                 </ul>
-            </li>
-            <li><b>For highest accuracy</b>: ZeroBounce with AI-scoring.</li>
-            <li><b>For spam trap detection</b>: Clearout, MailerCheck or Mailgun - have advanced spam trap detection capabilities.</li>
-            <li><b>For optimal price/quality ratio</b>: MailerCheck or Mailgun - high accuracy at a reasonable price.</li>
-        </ol>
+            </div>
+            <div class="col-md-9" style="padding: 0;">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="sa-contacts" role="tabpanel">
+                        <img src="screenshot_contacts.png" alt="Email validation badges in the Contacts list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Customers list with the Validation state column showing Valid and Invalid badges per record.</p>
+                    </div>
+                    <div class="tab-pane fade" id="sa-crm" role="tabpanel">
+                        <img src="screenshot_crm.png" alt="Email validation badges in the CRM leads list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Leads list &mdash; bad-email leads are flagged before they reach a salesperson.</p>
+                    </div>
+                    <div class="tab-pane fade" id="sa-recruitment" role="tabpanel">
+                        <img src="screenshot_recruitment.png" alt="Email validation badges in the candidates list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Candidate pipeline grouped by stage with the validation status visible per applicant.</p>
+                    </div>
+                    <div class="tab-pane fade" id="sa-hr" role="tabpanel">
+                        <img src="screenshot_hr.png" alt="Email validation badges in the Employees list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Employee directory with validated work_email addresses.</p>
+                    </div>
+                    <div class="tab-pane fade" id="sa-events" role="tabpanel">
+                        <img src="screenshot_events.png" alt="Email validation badges in the Event registrations list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Registrations list &mdash; attendees with bad addresses surface before invitations are sent.</p>
+                    </div>
+                    <div class="tab-pane fade" id="sa-mass-mailing" role="tabpanel">
+                        <img src="screenshot_mass_mailing.png" alt="Email validation badges in the Mailing List Contacts list" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Mailing list contacts &mdash; clean lists cut bounces before send.</p>
+                    </div>
+                    <div class="tab-pane fade" id="sa-validators" role="tabpanel">
+                        <img src="screenshot_validators.png" alt="Email validators registry with 11 configured validators" style="width: 100%; border: 1px solid #e5e9f2; border-radius: 6px; display: block;"/>
+                        <p style="color: #6b7791; font-size: 13px; margin: 8px 0 0;">Configuration of validators &mdash; local checks and 8 API providers, all in one registry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Configuration Guide</h3>
-        
-        <h4>Initial Setup</h4>
-        <ol>
-            <li>Install the kw_email_validation_bundle module</li>
-            <li>Go to Email Validation &rarr; Configuration &rarr; Validators</li>
-            <li>Configure at least one validator:</li>
-            <ul>
-                <li>For built-in validators (regexp, DNS, SMTP): Simply set them as active</li>
-                <li>For API-based validators: Enter your API key and set them as active</li>
-            </ul>
-        </ol>
-        
-        <h4>Validation Rules Configuration</h4>
-        <ol>
-            <li>Go to Email Validation &rarr; Configuration &rarr; Rules</li>
-            <li>Create rules to determine which validators are used and in what order:</li>
-            <ul>
-                <li><b>Name:</b> Descriptive name for the rule</li>
-                <li><b>Validator:</b> Select which validation service to use</li>
-                <li><b>Sequence:</b> Lower numbers execute first (start with less expensive validators)</li>
-                <li><b>Active:</b> Enable or disable the rule</li>
-            </ul>
-        </ol>
-        
-        <h4>Recommended Rule Configuration</h4>
-        <pre>
-# First try regexp validation - Sequence 10
-Name: Regexp Validation
-Validator: regexp
-Sequence: 10
+    <!-- 3. DOCUMENTATION TABS -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 36px;">Documentation</h2>
 
-# Then try DNS validation - Sequence 20
-Name: DNS Validation
-Validator: DNS
-Sequence: 20
-
-# Then try SMTP validation - Sequence 30
-Name: SMTP Validation
-Validator: SMTP
-Sequence: 30
-
-# Finally use paid API - Sequence 40
-Name: API Validation
-Validator: ZeroBounce (or other preferred API service)
-Sequence: 40
-        </pre>
-        
-        <h4>Module-Specific Settings</h4>
-        <p>
-            Each integration module automatically applies validation to its respective model's email fields.
-            No additional configuration is required for the individual modules after setting up the validators and rules.
-        </p>
-        
-        <h4>Manual Validation</h4>
-        <p>
-            To manually validate email addresses:
-        </p>
-        <ul>
-            <li><b>Individual Records:</b> Use the "Validate Email" action in the action menu of supported models</li>
-            <li><b>Web Interface:</b> Go to Email Validation &rarr; Validate Email to use the dedicated interface</li>
-            <li><b>Bulk Validation:</b> Upload CSV files through the web interface or use the scheduled actions</li>
+        <ul class="nav nav-tabs" role="tablist" style="border-bottom: 2px solid #e5e9f2; margin-bottom: 24px; flex-wrap: wrap;">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-overview" role="tab" style="color: #082567; font-weight: 600;"><i class="fa fa-list-alt"></i> Overview</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-validators" role="tab" style="color: #082567; font-weight: 600;"><i class="fa fa-plug"></i> Validators</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-integrations" role="tab" style="color: #082567; font-weight: 600;"><i class="fa fa-id-card-o"></i> Integrations</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-installation" role="tab" style="color: #082567; font-weight: 600;"><i class="fa fa-cube"></i> Installation</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-faq" role="tab" style="color: #082567; font-weight: 600;"><i class="fa fa-question-circle"></i> FAQ</a></li>
         </ul>
-    </div>
-</section>
 
-<section style="max-width: 896px; margin: 0 auto;">
-    <div>
-        <h3>Bug Tracker</h3>
-        <p>
-            Bugs are tracked on <a href="https://kitworks.systems/requests">https://kitworks.systems/requests</a>.
-            In case of trouble, please check there if your issue has already
-            been reported.
-        </p>
-    </div>
-</section>
+        <div class="tab-content">
 
-<section style="max-width: 896px; margin: 0 auto; text-align: center;">
-    <div>
-        <h2 style="color: #138c33">Maintainer</h2>
-        <p>KitWorks Systems. Our web site: <a href="https://kitworks.systems">https://kitworks.systems</a></p>
+            <div class="tab-pane fade show active" id="tab-overview" role="tabpanel">
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">How validation works</h3>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Every email address passes through a configurable pipeline. Validators run in sequence; the first one to determine the address as invalid stops the chain. Successful checks accumulate evidence until a final state is reached.</p>
+                <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
+                    <li><strong style="color: #082567;">Stage 1 &mdash; Regexp.</strong> RFC-style syntax check. Local, instant, free. Eliminates obvious typos.</li>
+                    <li><strong style="color: #082567;">Stage 2 &mdash; DNS.</strong> MX record lookup via dnspython. Confirms the domain accepts mail.</li>
+                    <li><strong style="color: #082567;">Stage 3 &mdash; SMTP.</strong> Connection-level handshake without sending mail. Detects mailbox existence.</li>
+                    <li><strong style="color: #082567;">Stage 4 &mdash; API.</strong> Optional third-party verification with disposable detection, role-based detection, accept-all flagging and spam-trap analysis.</li>
+                </ul>
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 24px 0 16px;">Result and reuse</h3>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Each validation run is stored and linked to the source record. Repeated checks of the same address reuse the cached result up to a configurable TTL, avoiding redundant API calls and saving cost.</p>
+            </div>
 
-        <p>
-            We can provide you further Odoo Support, Odoo implementation,
-            Odoo customization, Odoo 3rd Party development and integration
-            software, consulting services. Our main goal is to provide the best
-            quality product for you.
-        </p>
-        <p>
-            For any questions
-            <a href="mailto:info@kitworks.systems">contact us</a>.
-        </p>
+            <div class="tab-pane fade" id="tab-validators" role="tabpanel">
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">Built-in validators</h3>
+                <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
+                    <li><strong style="color: #082567;">Regexp.</strong> Syntax-only; no network call. First line of defence.</li>
+                    <li><strong style="color: #082567;">DNS (dnspython).</strong> Verifies MX and A records exist for the domain.</li>
+                    <li><strong style="color: #082567;">SMTP.</strong> Opens a connection to the recipient mail server and queries the mailbox without sending.</li>
+                </ul>
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 24px 0 16px;">Third-party API providers</h3>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Eight commercial validators are supported out of the box. Configure with your API key and assign a sequence in the rule engine.</p>
+                <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
+                    <li><strong style="color: #082567;">NeverBounce</strong> &mdash; high accuracy, accept-all flagging, role-based detection.</li>
+                    <li><strong style="color: #082567;">ZeroBounce</strong> &mdash; disposable detection, spam-trap detection, AI scoring.</li>
+                    <li><strong style="color: #082567;">Clearout</strong> &mdash; bulk-friendly, real-time validation, deliverability scoring.</li>
+                    <li><strong style="color: #082567;">MailerCheck</strong> &mdash; bounce prediction, MX validation, syntax check in one call.</li>
+                    <li><strong style="color: #082567;">Mailgun</strong> &mdash; part of the Mailgun deliverability stack, suitable if you already send via Mailgun.</li>
+                    <li><strong style="color: #082567;">SendPulse</strong> &mdash; free tier available, integrated with the SendPulse marketing suite.</li>
+                    <li><strong style="color: #082567;">MillionVerifier</strong> &mdash; high-volume bulk verification, predictable pricing.</li>
+                    <li><strong style="color: #082567;">QuickEmailVerification</strong> &mdash; fast single-call API, accept-all and disposable detection.</li>
+                </ul>
+            </div>
+
+            <div class="tab-pane fade" id="tab-integrations" role="tabpanel">
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">Where validation appears</h3>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Each integration adds a status badge to the relevant list view and decoration to the form view. Records are auto-validated on create and update.</p>
+                <ul style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
+                    <li><strong style="color: #082567;">Contacts</strong> (res.partner) &mdash; email field. Visible in customer and supplier lists.</li>
+                    <li><strong style="color: #082567;">CRM</strong> (crm.lead) &mdash; email_from field. Visible on the leads list and pipeline.</li>
+                    <li><strong style="color: #082567;">HR</strong> (hr.employee) &mdash; work_email field. Visible in the employee directory.</li>
+                    <li><strong style="color: #082567;">HR Recruitment</strong> (hr.applicant) &mdash; email_from field. Visible in the candidate pipeline.</li>
+                    <li><strong style="color: #082567;">Events</strong> (event.registration) &mdash; email field. Visible in the registrations list.</li>
+                    <li><strong style="color: #082567;">Mass Mailing</strong> (mailing.contact) &mdash; email field. Helps clean lists before send.</li>
+                    <li><strong style="color: #082567;">SMTP</strong> &mdash; built-in validator that performs server-level handshake.</li>
+                    <li><strong style="color: #082567;">DNS</strong> &mdash; built-in validator that resolves MX and A records.</li>
+                    <li><strong style="color: #082567;">Web</strong> &mdash; public endpoint for single-email and bulk validation requests.</li>
+                </ul>
+            </div>
+
+            <div class="tab-pane fade" id="tab-installation" role="tabpanel">
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">Three steps to live validation</h3>
+                <ol style="color: #2b3a5b; font-size: 15px; line-height: 1.7;">
+                    <li><strong style="color: #082567;">Install the bundle.</strong> Apps menu, search for <code>kw_email_validation_bundle</code> and install. The base module and all integrations are pulled automatically.</li>
+                    <li><strong style="color: #082567;">Configure validators.</strong> Settings, Technical, Email Validation, Validators. Enter API keys for any paid provider you plan to use. SMTP and DNS work without keys.</li>
+                    <li><strong style="color: #082567;">Set rules.</strong> Settings, Technical, Email Validation, Rules. Define the sequence in which validators run. Cheap local checks first, paid APIs last.</li>
+                </ol>
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 24px 0 16px;">Existing data</h3>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6;">Bulk-validate addresses already in the database from any list view. Select records, then Action, Validate Email. Results appear in seconds for local checks, minutes for API checks.</p>
+            </div>
+
+            <div class="tab-pane fade" id="tab-faq" role="tabpanel">
+                <h3 style="color: #082567; font-size: 22px; font-weight: 700; margin: 0 0 16px;">Frequently asked questions</h3>
+                <p style="color: #082567; font-size: 16px; font-weight: 700; margin: 16px 0 4px;">Are API keys required to use the suite?</p>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; margin: 0 0 12px;">No. Regexp, DNS and SMTP checks work with no external service. API providers are optional and are typically used to add disposable, spam-trap and accept-all detection.</p>
+                <p style="color: #082567; font-size: 16px; font-weight: 700; margin: 16px 0 4px;">How are API rate limits handled?</p>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; margin: 0 0 12px;">Each validator can be assigned a per-domain rule and a sequence. Rate-limited providers are placed last in the chain so they only run when local checks pass.</p>
+                <p style="color: #082567; font-size: 16px; font-weight: 700; margin: 16px 0 4px;">Can I bulk-validate the existing contacts database?</p>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; margin: 0 0 12px;">Yes. Select records in any supported list view and run the Validate Email action. The bundle module exposes a dedicated wizard for batched runs with progress indication.</p>
+                <p style="color: #082567; font-size: 16px; font-weight: 700; margin: 16px 0 4px;">How do I add a custom validator?</p>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; margin: 0 0 12px;">Inherit the kw.email.validator model and override the validate method. The new validator becomes available in the rules engine without further configuration.</p>
+                <p style="color: #082567; font-size: 16px; font-weight: 700; margin: 16px 0 4px;">Which providers detect spam-traps?</p>
+                <p style="color: #2b3a5b; font-size: 15px; line-height: 1.6; margin: 0 0 12px;">ZeroBounce and NeverBounce explicitly mark spam-trap addresses. The others return generic invalid status without categorising the trap.</p>
+            </div>
+
+        </div>
     </div>
+
+    <!-- 4. MODULES IN THIS SUITE -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 16px;">Modules in this suite</h2>
+        <p style="text-align: center; color: #2b3a5b; font-size: 16px; margin: 0 auto 36px; max-width: 640px;">Install the bundle for the full set, or pick individual integrations.</p>
+
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">Base framework</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validator models, rule engine and status tracking. Required by every member.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_contacts" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">Contacts</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_contacts</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validates the email field on res.partner. Protects master contact data.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_crm" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">CRM</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_crm</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validates email_from on crm.lead. Stops bad leads from entering the pipeline.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_hr" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">HR</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_hr</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validates work_email on hr.employee. Reliable internal communication.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_hr_recruitment" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">Recruitment</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_hr_recruitment</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validates email_from on hr.applicant. Clean candidate communication from day one.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_event" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">Events</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_event</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validates email on event.registration. Attendees actually receive the invitations.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_mass_mailing" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">Mass Mailing</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_mass_mailing</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Validates email on mailing.contact. Cuts bounces before send.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_smtp" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">SMTP validator</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_smtp</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Server-level mailbox handshake. Free, no API key, higher accuracy than DNS alone.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_dnspython" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">DNS validator</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_dnspython</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">MX and A record resolution via dnspython. Confirms the domain accepts mail.</div>
+                </a>
+            </div>
+            <div class="col-md-6" style="padding: 8px;">
+                <a href="https://apps.odoo.com/apps/modules/16.0/kw_email_validation_web" style="display: block; background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 18px; text-decoration: none;">
+                    <div style="color: #082567; font-weight: 700; font-size: 16px;">Web interface</div>
+                    <div style="color: #6b7791; font-size: 13px; font-family: monospace; margin: 2px 0 6px;">kw_email_validation_web</div>
+                    <div style="color: #2b3a5b; font-size: 14px; line-height: 1.4;">Public endpoint for single-address and bulk validation requests.</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. SERVICES -->
+    <div style="padding: 48px 0 32px; border-top: 1px solid #e5e9f2;">
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; text-align: center; margin: 0 0 36px;">Services</h2>
+        <div class="row" style="margin: 0;">
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%; text-align: center;">
+                    <div style="color: #082567; font-size: 32px; margin-bottom: 12px;"><i class="fa fa-cog"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Customization</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Custom validators, private API integrations, per-customer rule engines.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%; text-align: center;">
+                    <div style="color: #082567; font-size: 32px; margin-bottom: 12px;"><i class="fa fa-arrow-up"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Migration</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Upgrade between Odoo versions with preserved validation history.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 12px;">
+                <div style="background: #f6f8fc; border: 1px solid #e5e9f2; border-radius: 8px; padding: 24px; height: 100%; text-align: center;">
+                    <div style="color: #082567; font-size: 32px; margin-bottom: 12px;"><i class="fa fa-wrench"></i></div>
+                    <h3 style="color: #082567; font-size: 18px; font-weight: 700; margin: 0 0 8px;">Support</h3>
+                    <p style="color: #2b3a5b; font-size: 14px; line-height: 1.5; margin: 0;">Installation help, debugging and live troubleshooting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. NEED HELP? -->
+    <div style="padding: 48px 16px 64px; border-top: 1px solid #e5e9f2; text-align: center;">
+        <div style="color: #082567; font-size: 36px; margin-bottom: 16px;"><i class="fa fa-envelope"></i></div>
+        <h2 style="color: #082567; font-size: 28px; font-weight: 700; margin: 0 0 12px;">Need help?</h2>
+        <p style="color: #2b3a5b; font-size: 16px; line-height: 1.6; max-width: 560px; margin: 0 auto 24px;">Contact Kitworks Systems for installation help, bug reports, feature requests or custom validator integrations.</p>
+        <a href="mailto:info@kitworks.systems" style="display: inline-block; background: #082567; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-weight: 600; font-size: 16px;"><i class="fa fa-envelope" style="margin-right: 8px;"></i>Email info@kitworks.systems</a>
+    </div>
+
 </section>
