@@ -1,8 +1,19 @@
 {
     'name': 'Email Validation - DNS',
     'summary': """
-        Module for email validation using DNS queries
-        Uses the dnspython library to check domain MX records.
+        DNS Email Validator | DNS Email Verification |
+        DNS Email Check | DNS Based Email Validation |
+        MX Record Validation | MX Record Email Check |
+        MX Lookup Email Validator | A Record Email Check |
+        Domain Validation | Domain Email Verification |
+        Domain MX Check | Email Domain Resolver |
+        dnspython Email Check | dnspython Email Validator |
+        Mail Exchanger Lookup | Email Domain Existence Check |
+        Email Validator | Email Verifier | Email Checker |
+        DNS-based email validator that resolves MX and A records via the
+        dnspython library to confirm the recipient domain is configured to
+        accept mail. Plugs into the Email Validation Suite as an additional
+        rule for the validation pipeline.
     """,
 
     'author': 'Kitworks Systems',

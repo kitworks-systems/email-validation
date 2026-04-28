@@ -27,11 +27,7 @@
         Email Verification NeverBounce | Email Validation ZeroBounce |
         Email Checker SendPulse | Email Validator Mailgun |
         Email Verifier MailerCheck | Email Check QuickEmailVerification |
-        Email Validate MillionVerifier | Email Verify Clearout |
-        Comprehensive solution including syntax checking, domain verification,
-        SMTP validation, DNS validation, regex validation. Integration with
-        external services: NeverBounce, QuickEmailVerification, MillionVerifier,
-        Clearout, MailerCheck, Mailgun, SendPulse, ZeroBounce.
+        Email Validate MillionVerifier | Email Verify Clearout
     """,
 
     'author': 'Kitworks Systems',
