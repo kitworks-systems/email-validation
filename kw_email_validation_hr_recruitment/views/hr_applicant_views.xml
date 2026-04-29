@@ -16,4 +16,20 @@
         </field>
     </record>
 
+    <record id="hr_applicant_view_list_inherit_email_validation" model="ir.ui.view">
+        <field name="name">hr.applicant.list.inherit.email.validation</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+        <field name="arch" type="xml">
+            <field name="email_from" position="after">
+                <field name="kw_email_validation_state"
+                       widget="badge"
+                       optional="show"
+                       decoration-success="kw_email_validation_state == 'valid'"
+                       decoration-danger="kw_email_validation_state == 'invalid'"
+                       decoration-warning="kw_email_validation_state == 'pending'"/>
+            </field>
+        </field>
+    </record>
+
 </odoo>

@@ -15,7 +15,23 @@
             </field>
         </field>
     </record>
-    
+
+    <record id="view_res_partner_list_inherit_email_validation" model="ir.ui.view">
+        <field name="name">res.partner.list.inherit.email.validation</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="kw_email_validation_state"
+                       widget="badge"
+                       optional="show"
+                       decoration-success="kw_email_validation_state == 'valid'"
+                       decoration-danger="kw_email_validation_state == 'invalid'"
+                       decoration-warning="kw_email_validation_state == 'pending'"/>
+            </xpath>
+        </field>
+    </record>
+
     <record id="action_validate_email_partner" model="ir.actions.server">
         <field name="name">Validate Email</field>
         <field name="model_id" ref="base.model_res_partner"/>
