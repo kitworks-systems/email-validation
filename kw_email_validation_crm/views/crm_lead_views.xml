@@ -16,6 +16,22 @@
         </field>
     </record>
     
+    <record id="view_crm_lead_list" model="ir.ui.view">
+        <field name="name">crm.lead.list.email.validation</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <field name="email_from" position="after">
+                <field name="kw_email_validation_state"
+                       widget="badge"
+                       optional="show"
+                       decoration-success="kw_email_validation_state == 'valid'"
+                       decoration-danger="kw_email_validation_state == 'invalid'"
+                       decoration-warning="kw_email_validation_state == 'pending'"/>
+            </field>
+        </field>
+    </record>
+
     <record id="action_validate_email_crm_lead" model="ir.actions.server">
         <field name="name">Validate Email</field>
         <field name="model_id" ref="crm.model_crm_lead"/>
