@@ -25,9 +25,9 @@ class EmailValidationMixin(models.AbstractModel):
 
     def _compute_kw_email_validation_state(self):
         for record in self:
-            if self.kw_email_validation_id:
+            if record.kw_email_validation_id:
                 record.kw_email_validation_state = \
-                    self.kw_email_validation_id.state
+                    record.kw_email_validation_id.state
                 continue
             record.kw_email_validation_state = \
                 self.env['kw.email.validation'].sudo().get_validation_state(

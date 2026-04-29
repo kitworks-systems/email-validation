@@ -6,6 +6,8 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="url" optional="show"/>
+                <field name="regexp" optional="hide"/>
             </list>
         </field>
     </record>
