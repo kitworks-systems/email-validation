@@ -71,6 +71,10 @@ After installation, the system automatically checks email addresses when creatin
 1. Select multiple records in the list
 2. Use the action menu to launch bulk verification
 
+## Known issues
+
+Open defects are listed in [doc/known-issues.md](doc/known-issues.md).
+
 ## License
 
 LGPL-3
