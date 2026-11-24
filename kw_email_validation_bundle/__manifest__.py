@@ -17,11 +17,14 @@
         Prevent Bounce | Bounce Check | Check Bounce | Bulk Validation |
         Validate Bulk | Bulk Verify | List Cleaning | Clean List |
         Address Checker | Address Validation | Address Verification |
-        NeverBounce Verification | NeverBounce Validator | NeverBounce Integration |
-        ZeroBounce Verification | ZeroBounce Validator | ZeroBounce Integration |
+        NeverBounce Verification | NeverBounce Validator |
+        NeverBounce Integration |
+        ZeroBounce Verification | ZeroBounce Validator |
+        ZeroBounce Integration |
         SendPulse Verification | SendPulse Validator | SendPulse Integration |
         Mailgun Verification | Mailgun Validator | Mailgun Integration |
-        MailerCheck Verification | MailerCheck Validator | MailerCheck Integration |
+        MailerCheck Verification | MailerCheck Validator |
+        MailerCheck Integration |
         QuickEmailVerification Integration | MillionVerifier Integration |
         Clearout Verification | Clearout Validator | Clearout Integration |
         Email Verification NeverBounce | Email Validation ZeroBounce |
@@ -35,7 +38,7 @@
 
     'category': 'Customizations',
     'license': 'LGPL-3',
-    'version': '19.0.1.0.1',
+    'version': '20.0.1.0.0',
 
     'depends': [
         'kw_email_validation',

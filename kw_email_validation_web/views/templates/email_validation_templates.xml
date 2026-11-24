@@ -2,8 +2,7 @@
 <odoo>
     <!-- Email validation form template -->
     <template id="validate_email_form_template" name="Email Validation Form">
-        <t t-call="web.layout">
-            <t t-set="title">Email Validation</t>
+        <t t-call="web.layout" title.translate="Email Validation">
             <div class="container mt-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
@@ -18,7 +17,7 @@
                                 <select name="validator_id" id="validator_id" class="form-control">
                                     <option value="">Automatic selection</option>
                                     <t t-foreach="validators" t-as="validator">
-                                        <option t-att-value="validator.id" t-esc="validator.name"/>
+                                        <option t-att-value="validator.id" t-out="validator.name"/>
                                     </t>
                                 </select>
                                 <small class="form-text text-muted">
@@ -62,100 +61,91 @@
             </div>
             
             <script type="text/javascript">
-                odoo.define('kw_email_validation_web.validate_form', function (require) {
-                    'use strict';
-                    
-                    var core = require('web.core');
-                    var ajax = require('web.ajax');
-                    var _t = core._t;
-                    
-                    $(document).ready(function() {
-                        // Handle "Validate one by one" button
-                        $('#validate_single').click(function() {
-                            var emails = $('#emails').val().split('\n').filter(function(email) {
-                                return email.trim() !== '';
-                            });
-                            
-                            if (emails.length === 0) {
-                                alert(_t('Enter at least one email address'));
+                document.addEventListener('DOMContentLoaded', function () {
+                    var button = document.getElementById('validate_single');
+                    var resultsBody = document.getElementById('results_body');
+
+                    var addCell = function (row, text, cssClass, colSpan) {
+                        var cell = document.createElement('td');
+                        cell.textContent = text;
+                        if (cssClass) {
+                            cell.className = cssClass;
+                        }
+                        if (colSpan) {
+                            cell.colSpan = colSpan;
+                        }
+                        row.appendChild(cell);
+                    };
+
+                    var fillRow = function (row, email, status, cssClass, message) {
+                        row.replaceChildren();
+                        addCell(row, email);
+                        addCell(row, status, cssClass);
+                        addCell(row, message);
+                    };
+
+                    var validateEmail = function (email, validatorId) {
+                        return fetch('/email_validation/validate_ajax', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                jsonrpc: '2.0',
+                                method: 'call',
+                                params: {email: email, validator_id: validatorId},
+                            }),
+                        }).then(function (response) {
+                            return response.json();
+                        }).then(function (data) {
+                            if (data.error) {
+                                throw new Error(data.error.message);
+                            }
+                            return data.result;
+                        });
+                    };
+
+                    button.addEventListener('click', function () {
+                        var emails = document.getElementById('emails').value
+                            .split('\n')
+                            .map(function (email) { return email.trim(); })
+                            .filter(function (email) { return email !== ''; });
+
+                        if (emails.length === 0) {
+                            alert('Enter at least one email address');
+                            return;
+                        }
+
+                        var validatorId = document.getElementById('validator_id').value;
+                        resultsBody.replaceChildren();
+                        document.getElementById('validation_results').style.display = '';
+
+                        var processEmails = function (index) {
+                            if (index >= emails.length) {
                                 return;
                             }
-                            
-                            var validator_id = $('#validator_id').val();
-                            
-                            // Clear previous results
-                            $('#results_body').empty();
-                            $('#validation_results').show();
-                            
-                            // Sequential validation of each address
-                            var processEmails = function(index) {
-                                if (index >= emails.length) {
-                                    return; // All addresses processed
+                            var email = emails[index];
+                            var row = document.createElement('tr');
+                            addCell(row, email);
+                            addCell(row, 'Checking...', '', 2);
+                            resultsBody.appendChild(row);
+
+                            validateEmail(email, validatorId).then(function (result) {
+                                if (result.error) {
+                                    fillRow(row, email, result.error, 'text-danger', '');
+                                } else if (result.state === 'valid') {
+                                    fillRow(row, email, 'Valid', 'text-success', result.message || '');
+                                } else if (result.state === 'invalid') {
+                                    fillRow(row, email, 'Invalid', 'text-danger', result.message || '');
+                                } else {
+                                    fillRow(row, email, 'Pending', 'text-warning', result.message || '');
                                 }
-                                
-                                var email = emails[index].trim();
-                                if (!email) {
-                                    processEmails(index + 1);
-                                    return;
-                                }
-                                
-                                // Add row with loading indicator
-                                var row_id = 'email_row_' + index;
-                                $('#results_body').append(
-                                    '<tr id="' + row_id + '">' +
-                                    '<td>' + email + '</td>' +
-                                    '<td colspan="2"><i class="fa fa-spinner fa-spin"></i> Checking...</td>' +
-                                    '</tr>'
-                                );
-                                
-                                // Send validation request
-                                ajax.jsonRpc('/email_validation/validate_ajax', 'call', {
-                                    'email': email,
-                                    'validator_id': validator_id
-                                }).then(function(result) {
-                                    // Update row with result
-                                    var status_class = '';
-                                    var status_text = '';
-                                    
-                                    if (result.error) {
-                                        status_class = 'text-danger';
-                                        status_text = result.error;
-                                    } else {
-                                        if (result.state === 'valid') {
-                                            status_class = 'text-success';
-                                            status_text = 'Valid';
-                                        } else if (result.state === 'invalid') {
-                                            status_class = 'text-danger';
-                                            status_text = 'Invalid';
-                                        } else {
-                                            status_class = 'text-warning';
-                                            status_text = 'Pending';
-                                        }
-                                    }
-                                    
-                                    $('#' + row_id).html(
-                                        '<td>' + email + '</td>' +
-                                        '<td class="' + status_class + '">' + status_text + '</td>' +
-                                        '<td>' + (result.message || '') + '</td>'
-                                    );
-                                    
-                                    // Move to next address
-                                    processEmails(index + 1);
-                                }).guardedCatch(function(error) {
-                                    $('#' + row_id).html(
-                                        '<td>' + email + '</td>' +
-                                        '<td class="text-danger">Error</td>' +
-                                        '<td>Failed to validate address</td>'
-                                    );
-                                    
-                                    // Move to next address
-                                    processEmails(index + 1);
-                                });
-                            };
-                            
-                            // Start processing from the first address
-                            processEmails(0);
-                        });
+                            }).catch(function () {
+                                fillRow(row, email, 'Error', 'text-danger', 'Failed to validate address');
+                            }).then(function () {
+                                processEmails(index + 1);
+                            });
+                        };
+
+                        processEmails(0);
                     });
                 });
             </script>
@@ -164,8 +154,7 @@
     
     <!-- Template for displaying validation results -->
     <template id="validate_email_results_template" name="Email Validation Results">
-        <t t-call="web.layout">
-            <t t-set="title">Email Validation Results</t>
+        <t t-call="web.layout" title.translate="Email Validation Results">
             <div class="container mt-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
@@ -183,7 +172,7 @@
                             <tbody>
                                 <t t-foreach="results" t-as="result">
                                     <tr>
-                                        <td t-esc="result.get('email')"/>
+                                        <td t-out="result.get('email')"/>
                                         <td>
                                             <t t-if="result.get('state') == 'valid'">
                                                 <span class="badge badge-success">Valid</span>
@@ -195,7 +184,7 @@
                                                 <span class="badge badge-warning">Pending</span>
                                             </t>
                                         </td>
-                                        <td t-esc="result.get('message', '')"/>
+                                        <td t-out="result.get('message', '')"/>
                                     </tr>
                                 </t>
                             </tbody>

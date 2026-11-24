@@ -21,7 +21,7 @@
 
     'category': 'Hidden/Tools',
     'license': 'LGPL-3',
-    'version': '19.0.1.0.0',
+    'version': '20.0.1.0.0',
 
     'depends': [
         'web',
@@ -31,7 +31,7 @@
 
     'data': [
         'security/security.xml',
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
 
         'data/email_validator.xml',
         'data/ir_cron.xml',

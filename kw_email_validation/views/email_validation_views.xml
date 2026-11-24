@@ -32,7 +32,7 @@
                             <field name="result_ids" nolabel="1">
                                 <list>
                                     <field name="validator_id" string="Validator"/>
-                                    <field name="is_valid" string="Is Valid" widget="boolean_button" options="{'terminology': {'string_true': 'Valid', 'string_false': 'Invalid'}}"/>
+                                    <field name="is_valid" string="Is Valid" readonly="1"/>
                                     <field name="message" string="Message"/>
                                     <field name="create_date" string="Date" readonly="1"/>
                                 </list>

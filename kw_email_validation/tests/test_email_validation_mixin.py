@@ -37,7 +37,7 @@ class TestEmailValidationMixin(TransactionCase):
             ('invalid', 'Invalid'),
         ]
 
-        self.assertEqual(field.selection, expected_selection)
+        self.assertEqual(list(field.selection), expected_selection)
         # Default is a function in Odoo, so just check it exists
         self.assertTrue(hasattr(field, 'default'))
 
